@@ -1,3 +1,5 @@
+import { siteConfig } from "@/config/site"
+
 export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-black px-4 pt-24 text-white sm:px-6">
@@ -35,9 +37,16 @@ export default function Hero() {
             Ver menú
           </a>
 
-          <button className="rounded border border-white/20 px-8 py-4 text-sm uppercase tracking-[0.2em] text-white transition hover:bg-white hover:text-black">
+          <a
+            href={`https://wa.me/${siteConfig.business.whatsapp}?text=${encodeURIComponent(
+              "Hola, me gustaría recibir más información sobre el menú y los pedidos."
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded border border-white/20 px-8 py-4 text-center text-sm uppercase tracking-[0.2em] text-white transition hover:bg-white hover:text-black"
+          >
             Contacto
-          </button>
+          </a>
         </div>
       </div>
     </section>
