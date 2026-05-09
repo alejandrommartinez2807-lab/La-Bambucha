@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { formatUSD, formatVES } from "@/utils/formatCurrency"
 
 type ProductCardProps = {
@@ -26,6 +27,23 @@ export default function ProductCard({
   exchangeRate,
   onAddToCart,
 }: ProductCardProps) {
+  const [added, setAdded] = useState(false)
+
+  function handleAddToCart() {
+    onAddToCart({
+      id,
+      name,
+      price,
+      image,
+    })
+
+    setAdded(true)
+
+    setTimeout(() => {
+      setAdded(false)
+    }, 900)
+  }
+
   return (
     <div className="overflow-hidden rounded-2xl border border-white/10 bg-zinc-900">
       <img
@@ -56,17 +74,15 @@ export default function ProductCard({
         </p>
 
         <button
-          onClick={() =>
-            onAddToCart({
-              id,
-              name,
-              price,
-              image,
-            })
-          }
-          className="mt-6 w-full rounded-xl bg-yellow-600 px-4 py-4 font-semibold text-black transition hover:bg-yellow-500"
+          type="button"
+          onClick={handleAddToCart}
+          className={`mt-6 w-full rounded-xl px-4 py-4 font-semibold text-black transition active:scale-[0.98] ${
+            added
+              ? "bg-green-500"
+              : "bg-yellow-600 hover:bg-yellow-500"
+          }`}
         >
-          Add to Cart
+          {added ? "Agregado ✓" : "Agregar al carrito"}
         </button>
       </div>
     </div>
