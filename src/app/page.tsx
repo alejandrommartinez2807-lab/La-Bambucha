@@ -5,25 +5,26 @@ import { useExchangeRate } from "@/hooks/useExchangeRate"
 import Navbar from "@/components/Navbar"
 import Hero from "@/components/Hero"
 import Products from "@/components/Products"
+import BurgerClubShowcase from "@/components/BurgerClubShowcase"
 import CartDrawer from "@/components/CartDrawer"
-
 import { useCart } from "@/hooks/useCart"
 
 export default function Home() {
   const cart = useCart()
   const exchange = useExchangeRate()
-  console.log("EXCHANGE DESDE PAGE:", exchange.rate)
+
   const [isCartOpen, setIsCartOpen] = useState(false)
 
   return (
     <main className="bg-black text-white">
-
       <Navbar
         totalItems={cart.totalItems}
         onOpenCart={() => setIsCartOpen(true)}
       />
 
       <Hero />
+
+      <BurgerClubShowcase />
 
       <Products
         onAddToCart={cart.addItem}
@@ -40,7 +41,6 @@ export default function Home() {
         removeItem={cart.removeItem}
         exchangeRate={exchange.rate}
       />
-
     </main>
   )
 }

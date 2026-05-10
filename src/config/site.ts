@@ -1,7 +1,9 @@
 export const siteConfig = {
   business: {
-    name: "Maison Noir",
-    whatsapp: "584120383654",
+    name: "Burger Club",
+    whatsapp: "584145827432",
+    instagram: "burgerclub.val",
+    location: "Valencia, Venezuela",
   },
 
   currency: {

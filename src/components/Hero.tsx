@@ -2,50 +2,35 @@ import { siteConfig } from "@/config/site"
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden bg-black px-4 pt-24 text-white sm:px-6">
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-40"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2000')",
-        }}
-      />
-
-      <div className="absolute inset-0 bg-black/60" />
+    <section className="relative overflow-hidden bg-black px-4 pb-10 pt-24 text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#7f1d1d,transparent_35%),linear-gradient(to_bottom,#050505,#111)]" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
-        <p className="mb-5 text-xs uppercase tracking-[0.35em] text-yellow-500 sm:text-sm">
-          Fast Food Premium
-        </p>
+        <div className="overflow-hidden rounded-b-[2rem] border border-red-900/40 bg-zinc-950 shadow-2xl shadow-black/70">
+          <img
+            src="/burger-club/hero-firulais-con-clase.png"
+            alt="Firulais con Clase - Burger Club"
+            className="h-auto w-full object-cover"
+          />
+        </div>
 
-        <h1 className="max-w-4xl text-5xl font-light leading-none sm:text-7xl lg:text-8xl">
-          Ordena tu
-          <span className="block italic text-yellow-500">
-            comida favorita
-          </span>
-        </h1>
-
-        <p className="mt-6 max-w-xl text-base leading-relaxed text-zinc-300 sm:text-lg">
-          Perros, hamburguesas, pizzas, postres y bebidas con precios en dólares y bolívares actualizados.
-        </p>
-
-        <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
           <a
             href="#menu"
-            className="rounded bg-yellow-600 px-8 py-4 text-center text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:bg-yellow-500"
+            className="rounded-xl bg-yellow-400 px-6 py-4 text-center text-sm font-black uppercase tracking-[0.15em] text-black transition active:scale-[0.97]"
           >
             Ver menú
           </a>
 
           <a
             href={`https://wa.me/${siteConfig.business.whatsapp}?text=${encodeURIComponent(
-              "Hola, me gustaría recibir más información sobre el menú y los pedidos."
+              "Hola, me gustaría hacer un pedido en Burger Club."
             )}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded border border-white/20 px-8 py-4 text-center text-sm uppercase tracking-[0.2em] text-white transition hover:bg-white hover:text-black"
+            className="rounded-xl bg-red-600 px-6 py-4 text-center text-sm font-black uppercase tracking-[0.15em] text-white transition active:scale-[0.97]"
           >
-            Contacto
+            Pedir por WhatsApp
           </a>
         </div>
       </div>

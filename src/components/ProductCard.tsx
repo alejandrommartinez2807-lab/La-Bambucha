@@ -45,7 +45,7 @@ export default function ProductCard({
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-white/10 bg-zinc-900">
+    <div className="overflow-hidden rounded-2xl border border-red-900/50 bg-zinc-950 shadow-xl shadow-black/40">
       <img
         src={image}
         alt={name}
@@ -54,12 +54,12 @@ export default function ProductCard({
 
       <div className="p-5 sm:p-6">
         <div className="mb-3 flex items-start justify-between gap-4">
-          <h3 className="text-xl font-semibold text-white sm:text-2xl">
+          <h3 className="text-xl font-black text-white sm:text-2xl">
             {name}
           </h3>
 
           <div className="shrink-0 text-right">
-            <span className="block text-base font-bold text-yellow-500 sm:text-lg">
+            <span className="block text-base font-black text-yellow-400 sm:text-lg">
               {formatUSD(price)}
             </span>
 
@@ -76,10 +76,10 @@ export default function ProductCard({
         <button
           type="button"
           onClick={handleAddToCart}
-          className={`mt-6 w-full rounded-xl px-4 py-4 font-semibold text-black transition active:scale-[0.98] ${
+          className={`mt-6 w-full rounded-xl px-4 py-4 font-black uppercase transition active:scale-[0.98] ${
             added
-              ? "bg-green-500"
-              : "bg-yellow-600 hover:bg-yellow-500"
+              ? "bg-green-500 text-white"
+              : "bg-red-600 text-white hover:bg-red-500"
           }`}
         >
           {added ? "Agregado ✓" : "Agregar al carrito"}

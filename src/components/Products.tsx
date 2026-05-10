@@ -26,12 +26,12 @@ export default function Products({
     <section id="menu" className="bg-black px-4 py-16 text-white sm:px-6 sm:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 sm:mb-14">
-          <p className="mb-4 text-xs uppercase tracking-[0.35em] text-yellow-500 sm:text-sm">
-            Our Menu
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.35em] text-yellow-400 sm:text-sm">
+            Nuestro menú
           </p>
 
-          <h2 className="text-4xl font-light sm:text-5xl">
-            Categorías
+          <h2 className="text-4xl font-black uppercase sm:text-5xl">
+            Elige tu favorito
           </h2>
         </div>
 
@@ -43,10 +43,10 @@ export default function Products({
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`shrink-0 rounded-full border px-5 py-3 text-sm font-semibold transition ${
+                className={`shrink-0 rounded-full border px-5 py-3 text-sm font-black uppercase transition ${
                   isActive
-                    ? "border-yellow-500 bg-yellow-500 text-black"
-                    : "border-white/10 bg-zinc-900 text-zinc-300 hover:border-yellow-500 hover:text-yellow-500"
+                    ? "border-yellow-400 bg-yellow-400 text-black"
+                    : "border-red-900/60 bg-zinc-950 text-zinc-300 hover:border-yellow-400 hover:text-yellow-400"
                 }`}
               >
                 {category}
