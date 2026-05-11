@@ -23,15 +23,15 @@ export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
         <a href="#" className="flex items-center gap-3">
-          <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-yellow-400/40 bg-gradient-to-br from-yellow-400 to-red-600 shadow-lg shadow-red-950/50">
-            <div className="space-y-1.5">
-              <span className="block h-1.5 w-7 rounded-full bg-black" />
-              <span className="block h-1.5 w-5 rounded-full bg-black" />
-              <span className="block h-1.5 w-7 rounded-full bg-black" />
-            </div>
+          <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-black shadow-lg shadow-red-950/50 sm:h-16 sm:w-16">
+            <img
+              src="/logo-burger-club.png"
+              alt={siteConfig.business.name}
+              className="h-full w-full object-contain"
+            />
           </div>
 
-          <div className="leading-none">
+          <div className="hidden leading-none sm:block">
             <p className="text-xl font-black uppercase tracking-[-0.04em] text-yellow-400">
               Burger
             </p>
@@ -80,6 +80,7 @@ export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
             className="relative flex items-center gap-2 rounded-xl bg-gradient-to-r from-red-600 to-orange-500 px-4 py-3 text-sm font-black uppercase text-white shadow-lg shadow-red-950/40 transition hover:-translate-y-0.5 hover:from-red-500 hover:to-yellow-500 active:scale-[0.97]"
           >
             <ShoppingCart size={18} />
+
             <span className="hidden sm:inline">Carrito</span>
 
             <span className="absolute -right-2 -top-2 flex h-6 min-w-6 items-center justify-center rounded-full bg-yellow-400 px-1 text-xs font-black text-black ring-2 ring-black">

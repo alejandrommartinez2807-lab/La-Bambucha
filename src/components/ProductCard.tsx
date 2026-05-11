@@ -35,6 +35,8 @@ export default function ProductCard({
 }: ProductCardProps) {
   const [added, setAdded] = useState(false)
 
+  const isFirulais = name.toLowerCase().includes("firulais")
+
   function handleAddToCart() {
     onAddToCart({
       id,
@@ -52,6 +54,7 @@ export default function ProductCard({
 
   return (
     <motion.article
+      id={isFirulais ? "producto-firulais" : undefined}
       layout
       initial={{ opacity: 0, y: 28, scale: 0.96 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -59,7 +62,11 @@ export default function ProductCard({
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.2) }}
       whileHover={{ y: -8 }}
-      className="group overflow-hidden rounded-[1.8rem] border border-white/10 bg-zinc-950 shadow-2xl shadow-black/40"
+      className={`scroll-mt-28 overflow-hidden rounded-[1.8rem] border bg-zinc-950 shadow-2xl shadow-black/40 ${
+        isFirulais
+          ? "border-yellow-400/60 ring-2 ring-yellow-400/20"
+          : "border-white/10"
+      }`}
     >
       <div className="relative h-64 overflow-hidden bg-zinc-900 sm:h-72">
         <motion.img
@@ -72,6 +79,12 @@ export default function ProductCard({
 
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
+        {isFirulais && (
+          <span className="absolute right-4 top-4 rounded-full bg-yellow-400 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-black shadow-lg shadow-yellow-950/30">
+            Recomendado
+          </span>
+        )}
+
         {category && (
           <span className="absolute left-4 top-4 rounded-full border border-yellow-400/30 bg-black/70 px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-yellow-400 backdrop-blur">
             {category}
@@ -83,6 +96,7 @@ export default function ProductCard({
             <p className="text-xs font-black uppercase tracking-[0.22em] text-yellow-400">
               Burger Club
             </p>
+
             <h3 className="mt-1 text-2xl font-black uppercase leading-none tracking-[-0.04em] text-white">
               {name}
             </h3>
@@ -92,6 +106,7 @@ export default function ProductCard({
             <span className="block text-lg font-black leading-none">
               {formatUSD(price)}
             </span>
+
             <span className="text-xs font-bold">
               Bs {formatVES(price * exchangeRate)}
             </span>

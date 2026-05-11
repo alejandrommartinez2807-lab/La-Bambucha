@@ -9,7 +9,6 @@ import Hero from "@/components/Hero"
 import Products from "@/components/Products"
 import CartDrawer from "@/components/CartDrawer"
 import FirulaisVideoShowcase from "@/components/FirulaisVideoShowcase"
-import FirulaisExperience from "@/components/FirulaisExperience"
 
 export default function Home() {
   const cart = useCart()
@@ -26,8 +25,6 @@ export default function Home() {
       <Hero />
 
       <FirulaisVideoShowcase />
-
-      <FirulaisExperience />
 
       <Products
         onAddToCart={cart.addItem}

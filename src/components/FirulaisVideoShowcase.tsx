@@ -6,7 +6,7 @@ import { Flame, Play, ShoppingCart, Sparkles } from "lucide-react"
 export default function FirulaisVideoShowcase() {
   return (
     <section
-      id="firulais-video"
+      id="firulais"
       className="relative overflow-hidden bg-black px-4 py-20 text-white sm:px-6 sm:py-28"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(220,38,38,0.20),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(250,204,21,0.12),transparent_35%)]" />
@@ -19,7 +19,7 @@ export default function FirulaisVideoShowcase() {
           transition={{ duration: 0.6 }}
         >
           <p className="mb-4 text-xs font-black uppercase tracking-[0.35em] text-yellow-400 sm:text-sm">
-            Video premium
+            Producto estrella
           </p>
 
           <h2 className="text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] sm:text-7xl">
@@ -31,7 +31,7 @@ export default function FirulaisVideoShowcase() {
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-zinc-300 sm:text-lg">
             Un video corto estilo anuncio para mostrar el armado completo del
-            producto. Esto ayuda a que el Firulais se vea más premium, más
+            producto. Esto hace que el Firulais se vea más premium, más
             apetitoso y más fácil de vender a mejor precio.
           </p>
 
@@ -76,7 +76,7 @@ export default function FirulaisVideoShowcase() {
           </div>
 
           <a
-            href="#menu"
+            href="#producto-firulais"
             className="mt-8 inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-red-600 to-yellow-400 px-8 py-4 text-sm font-black uppercase tracking-[0.18em] text-black shadow-xl shadow-red-950/40 transition hover:-translate-y-1 active:scale-[0.97]"
           >
             <ShoppingCart size={18} />
