@@ -9,8 +9,10 @@ export default function Hero() {
   )
 
   return (
-    <section className="relative overflow-hidden bg-black px-4 pb-12 pt-24 text-white sm:px-6 sm:pb-20">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(220,38,38,0.45),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(250,204,21,0.18),transparent_30%),linear-gradient(to_bottom,#050505,#111)]" />
+    <section className="relative overflow-hidden bg-black px-4 pb-14 pt-28 text-white sm:px-6 sm:pb-20">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(220,38,38,0.42),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(250,204,21,0.12),transparent_34%),linear-gradient(to_bottom,#050505_0%,#120606_45%,#000_100%)]" />
+
+      <div className="absolute left-0 right-0 top-[330px] h-40 bg-gradient-to-b from-transparent via-black/30 to-black sm:top-[420px]" />
 
       <motion.div
         className="absolute -right-24 top-24 h-72 w-72 rounded-full bg-red-600/20 blur-3xl"
@@ -29,7 +31,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 35 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="mx-auto mb-8 max-w-4xl text-center"
+          className="mx-auto mb-7 max-w-4xl text-center sm:mb-10"
         >
           <p className="mb-4 text-xs font-black uppercase tracking-[0.35em] text-yellow-400 sm:text-sm">
             {siteConfig.business.tagline || "Sabor callejero, estilo premium"}
@@ -49,25 +51,32 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.94, y: 30 }}
+          initial={{ opacity: 0, scale: 0.96, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="overflow-hidden rounded-[2rem] border border-red-900/50 bg-zinc-950 shadow-2xl shadow-red-950/40"
+          className="relative mx-auto max-w-5xl"
         >
-          <motion.img
-            src="/burger-club/hero-firulais-con-clase.png"
-            alt="Firulais con Clase - Burger Club"
-            className="h-auto w-full object-cover"
-            whileHover={{ scale: 1.025 }}
-            transition={{ duration: 0.45 }}
-          />
+          <div className="absolute -inset-3 rounded-[2.3rem] bg-gradient-to-b from-red-600/25 via-yellow-400/10 to-transparent blur-2xl" />
+
+          <div className="relative overflow-hidden rounded-[2rem] border border-red-900/50 bg-zinc-950 shadow-2xl shadow-red-950/40">
+            <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-black/45 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-28 bg-gradient-to-t from-black/55 to-transparent" />
+
+            <motion.img
+              src="/burger-club/hero-firulais-con-clase.png"
+              alt="Firulais con Clase - Burger Club"
+              className="h-auto w-full object-cover"
+              whileHover={{ scale: 1.018 }}
+              transition={{ duration: 0.45 }}
+            />
+          </div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.35 }}
-          className="mt-6 grid gap-3 sm:grid-cols-2"
+          className="mx-auto mt-6 grid max-w-5xl gap-3 sm:grid-cols-2"
         >
           <a
             href="#menu"
