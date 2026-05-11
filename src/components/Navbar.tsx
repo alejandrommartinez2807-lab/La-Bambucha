@@ -27,11 +27,11 @@ export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.55 }}
-        className="fixed left-0 right-0 top-0 z-50 border-b border-red-900/40 bg-black/90 px-4 py-3 text-white backdrop-blur-xl"
+        className="fixed left-0 right-0 top-0 z-50 border-b border-red-900/35 bg-black/88 px-4 py-3 text-white shadow-2xl shadow-black/40 backdrop-blur-xl"
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
-          <a href="#" className="flex items-center gap-3" onClick={closeMenu}>
-            <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-black shadow-lg shadow-red-950/50 sm:h-16 sm:w-16">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3">
+          <a href="#" className="flex min-w-0 items-center gap-3" onClick={closeMenu}>
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-black shadow-lg shadow-red-950/50 ring-1 ring-yellow-400/25 sm:h-16 sm:w-16">
               <img
                 src="/logo-burger-club.png"
                 alt={siteConfig.business.name}
@@ -39,11 +39,11 @@ export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
               />
             </div>
 
-            <div className="hidden leading-none sm:block">
-              <p className="text-xl font-black uppercase tracking-[-0.04em] text-yellow-400">
+            <div className="block leading-none">
+              <p className="text-lg font-black uppercase tracking-[-0.04em] text-yellow-400 sm:text-xl">
                 Burger
               </p>
-              <p className="text-base font-black uppercase tracking-[0.18em] text-red-500">
+              <p className="text-sm font-black uppercase tracking-[0.2em] text-red-500 sm:text-base">
                 Club
               </p>
             </div>
@@ -74,11 +74,11 @@ export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
             </a>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2">
             <button
               type="button"
               onClick={() => setIsMenuOpen((current) => !current)}
-              className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-zinc-950 text-white md:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-zinc-950 text-white shadow-lg shadow-black/30 md:hidden"
               aria-label="Abrir menú"
             >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -86,7 +86,7 @@ export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
 
             <button
               onClick={onOpenCart}
-              className="relative flex items-center gap-2 rounded-xl bg-gradient-to-r from-red-600 to-orange-500 px-4 py-3 text-sm font-black uppercase text-white shadow-lg shadow-red-950/40 transition hover:-translate-y-0.5 hover:from-red-500 hover:to-yellow-500 active:scale-[0.97]"
+              className="relative flex h-11 items-center gap-2 rounded-xl bg-gradient-to-r from-red-600 to-orange-500 px-3 text-sm font-black uppercase text-white shadow-lg shadow-red-950/40 transition hover:-translate-y-0.5 hover:from-red-500 hover:to-yellow-500 active:scale-[0.97] sm:h-auto sm:px-4 sm:py-3"
             >
               <ShoppingCart size={18} />
 
@@ -107,7 +107,7 @@ export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -18 }}
             transition={{ duration: 0.22 }}
-            className="fixed left-4 right-4 top-[88px] z-40 rounded-3xl border border-white/10 bg-zinc-950/95 p-4 text-white shadow-2xl shadow-black/60 backdrop-blur-xl md:hidden"
+            className="fixed left-4 right-4 top-[86px] z-40 rounded-3xl border border-white/10 bg-zinc-950/95 p-4 text-white shadow-2xl shadow-black/60 backdrop-blur-xl md:hidden"
           >
             <div className="grid gap-3">
               <a
