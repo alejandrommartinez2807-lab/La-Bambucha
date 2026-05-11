@@ -3,29 +3,16 @@
 import { useEffect, useState } from "react"
 import { siteConfig } from "@/config/site"
 
-const CACHE_KEY = "bcv_exchange_rate"
-const ONE_DAY = 24 * 60 * 60 * 1000
+const CACHE_KEY = "burger_club_exchange_rate_v2"
+const CACHE_TIME = 6 * 60 * 60 * 1000
 
 type ExchangeSource = "BCV" | "Cache" | "Fallback"
 
-type DolarApiResponse = {
-  promedio?: number | string
-  promedioGeneral?: number | string
-  venta?: number | string
-  compra?: number | string
-  fechaActualizacion?: string
-}
-
-function parseRate(value: unknown) {
-  if (typeof value === "number") return value
-
-  if (typeof value === "string") {
-    const normalized = value.replace(",", ".")
-    const parsed = Number(normalized)
-    return Number.isFinite(parsed) ? parsed : 0
-  }
-
-  return 0
+type ExchangeCache = {
+  rate: number
+  source: ExchangeSource
+  updatedAt: string | null
+  timestamp: number
 }
 
 export function useExchangeRate() {
@@ -40,51 +27,50 @@ export function useExchangeRate() {
         const cached = localStorage.getItem(CACHE_KEY)
 
         if (cached) {
-          const parsed = JSON.parse(cached)
-          const isFresh = Date.now() - parsed.timestamp < ONE_DAY
-          const cachedRate = parseRate(parsed.rate)
+          const parsed: ExchangeCache = JSON.parse(cached)
+          const isFresh = Date.now() - parsed.timestamp < CACHE_TIME
 
-          if (isFresh && cachedRate > 0) {
-            setRate(cachedRate)
-            setUpdatedAt(parsed.updatedAt || null)
+          if (isFresh && Number(parsed.rate) > 0) {
+            setRate(Number(parsed.rate))
             setSource("Cache")
+            setUpdatedAt(parsed.updatedAt || null)
             setLoading(false)
             return
           }
         }
 
-        const response = await fetch(
-          "https://ve.dolarapi.com/v1/dolares/oficial"
-        )
+        const response = await fetch("/api/exchange-rate", {
+          cache: "no-store",
+        })
 
         if (!response.ok) {
-          throw new Error("No se pudo obtener la tasa")
+          throw new Error("No se pudo cargar la tasa")
         }
 
-        const data: DolarApiResponse = await response.json()
+        const data = await response.json()
+        const newRate = Number(data.rate)
 
-        const newRate =
-          parseRate(data.promedio) ||
-          parseRate(data.promedioGeneral) ||
-          parseRate(data.venta) ||
-          parseRate(data.compra) ||
-          siteConfig.currency.fallbackRate
+        if (!newRate) {
+          throw new Error("Tasa inválida")
+        }
 
         setRate(newRate)
-        setUpdatedAt(data.fechaActualizacion || null)
         setSource("BCV")
+        setUpdatedAt(data.updatedAt || null)
 
         localStorage.setItem(
           CACHE_KEY,
           JSON.stringify({
             rate: newRate,
-            updatedAt: data.fechaActualizacion || null,
+            source: "BCV",
+            updatedAt: data.updatedAt || null,
             timestamp: Date.now(),
           })
         )
       } catch {
         setRate(siteConfig.currency.fallbackRate)
         setSource("Fallback")
+        setUpdatedAt(null)
       } finally {
         setLoading(false)
       }

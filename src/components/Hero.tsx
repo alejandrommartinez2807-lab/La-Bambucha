@@ -9,20 +9,26 @@ export default function Hero() {
   )
 
   return (
-    <section className="relative overflow-hidden bg-black px-4 pb-12 pt-24 text-white sm:px-6 sm:pb-20">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(220,38,38,0.45),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(250,204,21,0.14),transparent_34%),linear-gradient(to_bottom,#050505_0%,#170707_42%,#000_100%)]" />
+    <section className="relative overflow-hidden bg-black px-4 pb-16 pt-28 text-white sm:px-6 sm:pb-24">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(220,38,38,0.48),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(250,204,21,0.12),transparent_35%),linear-gradient(to_bottom,#050505_0%,#140606_38%,#070303_62%,#000_100%)]" />
 
-      <div className="pointer-events-none absolute inset-x-0 top-[300px] z-[1] h-72 bg-gradient-to-b from-transparent via-black/50 to-black sm:top-[380px]" />
+      <div className="absolute inset-x-0 top-[220px] h-[520px] bg-[radial-gradient(ellipse_at_center,rgba(127,29,29,0.42),transparent_58%)] sm:top-[260px]" />
 
       <motion.div
-        className="absolute -right-24 top-24 h-72 w-72 rounded-full bg-red-600/20 blur-3xl"
-        animate={{ scale: [1, 1.15, 1], opacity: [0.35, 0.7, 0.35] }}
+        className="absolute -right-24 top-20 h-72 w-72 rounded-full bg-red-600/20 blur-3xl"
+        animate={{ scale: [1, 1.16, 1], opacity: [0.35, 0.7, 0.35] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <motion.div
+        className="absolute -left-24 bottom-20 h-72 w-72 rounded-full bg-yellow-400/10 blur-3xl"
+        animate={{ scale: [1.1, 1, 1.1], opacity: [0.3, 0.62, 0.3] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="relative z-10 mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 35 }}
+          initial={{ opacity: 0, y: 34 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           className="mx-auto max-w-4xl text-center"
@@ -45,22 +51,25 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.96, y: 30 }}
+          initial={{ opacity: 0, scale: 0.96, y: 28 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="relative z-10 mx-auto -mt-2 max-w-5xl pt-10 sm:-mt-4"
+          className="relative mx-auto mt-9 max-w-5xl sm:mt-12"
         >
-          <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-b from-yellow-400/15 via-red-600/20 to-transparent blur-2xl" />
+          <div className="absolute -inset-x-3 -top-10 h-32 rounded-[2.5rem] bg-gradient-to-b from-red-600/25 via-red-600/10 to-transparent blur-2xl" />
+          <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-yellow-400/10 via-red-600/15 to-transparent blur-2xl" />
 
-          <div className="relative overflow-hidden rounded-[2rem] border border-red-900/50 bg-zinc-950 shadow-2xl shadow-red-950/40">
-            <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-28 bg-gradient-to-b from-black/70 via-black/20 to-transparent" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-32 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+          <div className="relative overflow-hidden rounded-[2rem] border border-red-900/45 bg-[#070303] shadow-2xl shadow-red-950/40">
+            <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-24 bg-gradient-to-b from-[#090303]/80 via-[#090303]/25 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-28 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-black/45 to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-black/45 to-transparent" />
 
             <motion.img
               src="/burger-club/hero-firulais-con-clase.png"
               alt="Firulais con Clase - Burger Club"
               className="h-auto w-full object-cover"
-              whileHover={{ scale: 1.018 }}
+              whileHover={{ scale: 1.015 }}
               transition={{ duration: 0.45 }}
             />
           </div>
