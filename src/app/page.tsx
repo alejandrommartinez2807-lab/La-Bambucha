@@ -2,17 +2,18 @@
 
 import { useState } from "react"
 import { useExchangeRate } from "@/hooks/useExchangeRate"
+import { useCart } from "@/hooks/useCart"
+
 import Navbar from "@/components/Navbar"
 import Hero from "@/components/Hero"
 import Products from "@/components/Products"
-import BurgerClubShowcase from "@/components/BurgerClubShowcase"
 import CartDrawer from "@/components/CartDrawer"
-import { useCart } from "@/hooks/useCart"
+import FirulaisVideoShowcase from "@/components/FirulaisVideoShowcase"
+import FirulaisExperience from "@/components/FirulaisExperience"
 
 export default function Home() {
   const cart = useCart()
   const exchange = useExchangeRate()
-
   const [isCartOpen, setIsCartOpen] = useState(false)
 
   return (
@@ -24,7 +25,9 @@ export default function Home() {
 
       <Hero />
 
-      <BurgerClubShowcase />
+      <FirulaisVideoShowcase />
+
+      <FirulaisExperience />
 
       <Products
         onAddToCart={cart.addItem}

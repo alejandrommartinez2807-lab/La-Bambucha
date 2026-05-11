@@ -1,6 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+
+const CART_STORAGE_KEY = "burger_club_cart"
 
 export type CartItem = {
   id: number
@@ -19,6 +21,22 @@ export type ProductToAdd = {
 
 export function useCart() {
   const [items, setItems] = useState<CartItem[]>([])
+
+  useEffect(() => {
+    try {
+      const savedCart = localStorage.getItem(CART_STORAGE_KEY)
+
+      if (savedCart) {
+        setItems(JSON.parse(savedCart))
+      }
+    } catch {
+      setItems([])
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items))
+  }, [items])
 
   function addItem(product: ProductToAdd) {
     setItems((currentItems) => {

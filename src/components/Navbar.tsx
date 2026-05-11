@@ -1,3 +1,7 @@
+"use client"
+
+import { motion } from "motion/react"
+import { Menu, ShoppingCart } from "lucide-react"
 import { siteConfig } from "@/config/site"
 
 type NavbarProps = {
@@ -5,37 +9,85 @@ type NavbarProps = {
   onOpenCart: () => void
 }
 
-export default function Navbar({
-  totalItems,
-  onOpenCart,
-}: NavbarProps) {
-  return (
-    <nav className="fixed left-0 right-0 top-0 z-50 border-b border-red-900/50 bg-black/90 px-4 py-3 text-white backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between">
-        <a href="#" className="flex items-center gap-3">
-          <img
-            src="/burger-club/logo-burger-club.png"
-            alt={siteConfig.business.name}
-            className="h-12 w-12 rounded-full object-cover ring-2 ring-yellow-400/70"
-          />
+export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
+  const whatsappText = encodeURIComponent(
+    "Hola, me gustaría hacer un pedido en Burger Club."
+  )
 
-          <div className="leading-tight">
-            <p className="text-lg font-black text-yellow-400">
+  return (
+    <motion.nav
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.55 }}
+      className="fixed left-0 right-0 top-0 z-50 border-b border-red-900/40 bg-black/90 px-4 py-3 text-white backdrop-blur-xl"
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
+        <a href="#" className="flex items-center gap-3">
+          <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-yellow-400/40 bg-gradient-to-br from-yellow-400 to-red-600 shadow-lg shadow-red-950/50">
+            <div className="space-y-1.5">
+              <span className="block h-1.5 w-7 rounded-full bg-black" />
+              <span className="block h-1.5 w-5 rounded-full bg-black" />
+              <span className="block h-1.5 w-7 rounded-full bg-black" />
+            </div>
+          </div>
+
+          <div className="leading-none">
+            <p className="text-xl font-black uppercase tracking-[-0.04em] text-yellow-400">
               Burger
             </p>
-            <p className="-mt-1 text-sm font-bold text-yellow-400">
+            <p className="text-base font-black uppercase tracking-[0.18em] text-red-500">
               Club
             </p>
           </div>
         </a>
 
-        <button
-          onClick={onOpenCart}
-          className="rounded-xl bg-red-600 px-4 py-3 text-sm font-black text-white shadow-lg shadow-red-950/40 transition active:scale-[0.97]"
-        >
-          Carrito ({totalItems})
-        </button>
+        <div className="hidden items-center gap-8 md:flex">
+          <a
+            href="#menu"
+            className="text-sm font-bold uppercase tracking-[0.18em] text-zinc-300 transition hover:text-yellow-400"
+          >
+            Menú
+          </a>
+
+          <a
+            href="#firulais"
+            className="text-sm font-bold uppercase tracking-[0.18em] text-zinc-300 transition hover:text-yellow-400"
+          >
+            Firulais
+          </a>
+
+          <a
+            href={`https://wa.me/${siteConfig.business.whatsapp}?text=${whatsappText}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-bold uppercase tracking-[0.18em] text-zinc-300 transition hover:text-yellow-400"
+          >
+            WhatsApp
+          </a>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-zinc-950 text-white md:hidden"
+            aria-label="Abrir menú"
+          >
+            <Menu size={20} />
+          </button>
+
+          <button
+            onClick={onOpenCart}
+            className="relative flex items-center gap-2 rounded-xl bg-gradient-to-r from-red-600 to-orange-500 px-4 py-3 text-sm font-black uppercase text-white shadow-lg shadow-red-950/40 transition hover:-translate-y-0.5 hover:from-red-500 hover:to-yellow-500 active:scale-[0.97]"
+          >
+            <ShoppingCart size={18} />
+            <span className="hidden sm:inline">Carrito</span>
+
+            <span className="absolute -right-2 -top-2 flex h-6 min-w-6 items-center justify-center rounded-full bg-yellow-400 px-1 text-xs font-black text-black ring-2 ring-black">
+              {totalItems}
+            </span>
+          </button>
+        </div>
       </div>
-    </nav>
+    </motion.nav>
   )
 }
