@@ -30,9 +30,9 @@ export default function FirulaisVideoShowcase() {
           </h2>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-zinc-300 sm:text-lg">
-            Un video corto estilo anuncio para mostrar el armado completo del
-            producto. Esto hace que el Firulais se vea más premium, más
-            apetitoso y más fácil de vender a mejor precio.
+            Pan tostado, salchicha jugosa, queso fundido, papitas crujientes,
+            tocineta y salsas BC. Así se arma el Firulais con Clase: cargado,
+            brutal y hecho para matar el antojo.
           </p>
 
           <div className="mt-8 grid gap-4">
@@ -44,12 +44,12 @@ export default function FirulaisVideoShowcase() {
 
                 <div>
                   <h3 className="text-lg font-black uppercase text-white">
-                    Más apetitoso
+                    Cargado de sabor
                   </h3>
 
                   <p className="mt-1 text-sm leading-relaxed text-zinc-400">
-                    El cliente ve el queso, las papitas, la salsa y el acabado
-                    final en movimiento.
+                    Queso fundido, papitas crunchy y salsas cayendo sobre una
+                    base caliente y bien cargada.
                   </p>
                 </div>
               </div>
@@ -63,12 +63,12 @@ export default function FirulaisVideoShowcase() {
 
                 <div>
                   <h3 className="text-lg font-black uppercase text-white">
-                    Sensación de marca
+                    Flow Burger Club
                   </h3>
 
                   <p className="mt-1 text-sm leading-relaxed text-zinc-400">
-                    Se siente más como una campaña de producto que como una
-                    simple lista de ingredientes.
+                    Un perro exagerado, sabroso y hecho para los que piden sin
+                    miedo.
                   </p>
                 </div>
               </div>
@@ -121,7 +121,7 @@ export default function FirulaisVideoShowcase() {
                 </p>
 
                 <h3 className="mt-2 text-3xl font-black uppercase leading-none tracking-[-0.05em] text-white sm:text-4xl">
-                  De antojo simple a producto premium
+                  De antojo simple a perro brutal
                 </h3>
               </div>
             </div>
