@@ -25,13 +25,12 @@ export default function Products({
   return (
     <section
       id="menu"
-      className="relative overflow-hidden bg-black px-4 py-20 text-white sm:px-6 sm:py-28"
+      className="relative overflow-hidden bg-black px-4 pb-20 pt-10 text-white sm:px-6 sm:pb-28 sm:pt-16"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(220,38,38,0.22),transparent_34%),radial-gradient(circle_at_top_right,rgba(250,204,21,0.10),transparent_30%),linear-gradient(to_bottom,#120505_0%,#050505_28%,#030303_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(220,38,38,0.20),transparent_34%),radial-gradient(circle_at_right,rgba(250,204,21,0.08),transparent_30%),linear-gradient(to_bottom,#050505_0%,#160606_18%,#060303_42%,#030303_100%)]" />
 
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-red-950/25 via-black/40 to-transparent" />
-      <div className="absolute left-1/2 top-20 h-80 w-80 -translate-x-1/2 rounded-full bg-red-600/10 blur-3xl" />
-      <div className="absolute -right-28 top-40 h-72 w-72 rounded-full bg-yellow-400/10 blur-3xl" />
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black via-black/70 to-transparent" />
+      <div className="absolute left-1/2 top-24 h-72 w-72 -translate-x-1/2 rounded-full bg-red-600/10 blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-7xl">
         <motion.div
@@ -39,9 +38,9 @@ export default function Products({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.55 }}
-          className="mb-10 max-w-3xl sm:mb-14"
+          className="mb-8 max-w-3xl sm:mb-12"
         >
-          <div className="mb-5 inline-flex rounded-full border border-yellow-400/20 bg-yellow-400/10 px-4 py-2">
+          <div className="mb-5 inline-flex rounded-full border border-yellow-400/20 bg-yellow-400/10 px-4 py-2 shadow-lg shadow-yellow-950/10">
             <p className="text-xs font-black uppercase tracking-[0.3em] text-yellow-400 sm:text-sm">
               Menú Burger Club
             </p>
@@ -61,8 +60,8 @@ export default function Products({
           </p>
         </motion.div>
 
-        <div className="sticky top-[74px] z-20 -mx-4 mb-10 border-y border-white/5 bg-black/75 px-4 py-4 backdrop-blur-xl sm:static sm:mx-0 sm:border-0 sm:bg-transparent sm:px-0 sm:py-0">
-          <div className="flex gap-3 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="mb-10 rounded-[1.7rem] border border-white/10 bg-black/45 p-3 shadow-2xl shadow-black/30 backdrop-blur-xl">
+          <div className="flex gap-3 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {categories.map((category) => {
               const isActive = selectedCategory === category
 

@@ -7,7 +7,8 @@ export default function FirulaisVideoShowcase() {
   return (
     <section
       id="firulais"
-      className="relative overflow-hidden bg-black px-4 py-20 text-white sm:px-6 sm:py-28"
+      
+      className="relative overflow-hidden bg-black px-4 pb-10 pt-20 text-white sm:px-6 sm:pb-14 sm:pt-28"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(220,38,38,0.20),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(250,204,21,0.12),transparent_35%)]" />
 
