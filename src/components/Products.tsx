@@ -1,7 +1,6 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "motion/react"
+import { useMemo, useState } from "react"
 import ProductCard from "./ProductCard"
 import { categories, products } from "@/data/products"
 import type { ProductToAdd } from "@/hooks/useCart"
@@ -11,95 +10,110 @@ type ProductsProps = {
   exchangeRate: number
 }
 
-export default function Products({
-  onAddToCart,
-  exchangeRate,
-}: ProductsProps) {
+const sampleProductIds = [27, 28, 15]
+
+export default function Products({ onAddToCart, exchangeRate }: ProductsProps) {
   const [selectedCategory, setSelectedCategory] = useState("Todos")
 
-  const filteredProducts =
-    selectedCategory === "Todos"
-      ? products
-      : products.filter((product) => product.category === selectedCategory)
+  const allCategories = useMemo(() => ["Todos", ...categories], [])
+
+  const sampleProducts = useMemo(() => {
+    return sampleProductIds
+      .map((id) => products.find((product) => product.id === id))
+      .filter((product): product is (typeof products)[number] =>
+        Boolean(product)
+      )
+  }, [])
+
+  const filteredProducts = useMemo(() => {
+    if (selectedCategory === "Todos") return products
+
+    return products.filter((product) => product.category === selectedCategory)
+  }, [selectedCategory])
 
   return (
     <section
       id="menu"
-      className="relative overflow-hidden bg-black px-4 pb-20 pt-10 text-white sm:px-6 sm:pb-28 sm:pt-16"
+      className="relative overflow-hidden bg-[#050101] px-4 py-14 text-white sm:py-20"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(220,38,38,0.20),transparent_34%),radial-gradient(circle_at_right,rgba(250,204,21,0.08),transparent_30%),linear-gradient(to_bottom,#050505_0%,#160606_18%,#060303_42%,#030303_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,122,0,0.18),transparent_35%),linear-gradient(180deg,#050101_0%,#160505_45%,#050101_100%)]" />
+      <div className="absolute left-1/2 top-24 h-72 w-72 -translate-x-1/2 rounded-full bg-red-700/20 blur-3xl" />
 
-      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black via-black/70 to-transparent" />
-      <div className="absolute left-1/2 top-24 h-72 w-72 -translate-x-1/2 rounded-full bg-red-600/10 blur-3xl" />
+      <div className="relative mx-auto max-w-7xl">
+        <div className="mb-8 text-center sm:mb-12">
+          <p className="mb-3 text-xs font-black uppercase tracking-[0.28em] text-orange-400 sm:text-sm">
+            La Bambucha Grill Burger
+          </p>
 
-      <div className="relative z-10 mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.55 }}
-          className="mb-8 max-w-3xl sm:mb-12"
-        >
-          <div className="mb-5 inline-flex rounded-full border border-yellow-400/20 bg-yellow-400/10 px-4 py-2 shadow-lg shadow-yellow-950/10">
-            <p className="text-xs font-black uppercase tracking-[0.3em] text-yellow-400 sm:text-sm">
-              Menú Burger Club
+          <h2 className="text-4xl font-black uppercase text-red-600 drop-shadow-[0_0_18px_rgba(255,0,0,0.55)] sm:text-5xl md:text-7xl">
+            Menú
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-2xl text-sm font-semibold text-zinc-300 sm:text-base md:text-lg">
+            Combos, hamburguesas, perritos, pepitos, shawarmas, parrillas,
+            delicias y bebidas.
+          </p>
+        </div>
+
+        <div className="mb-12 rounded-3xl border border-orange-500/25 bg-black/35 p-4 shadow-[0_0_45px_rgba(255,90,0,0.12)] sm:p-6">
+          <div className="mb-6 text-center">
+            <p className="text-xs font-black uppercase tracking-[0.28em] text-orange-400">
+              Fotos reales
+            </p>
+
+            <h3 className="mt-2 text-3xl font-black uppercase text-yellow-400 sm:text-4xl">
+              Muestras
+            </h3>
+
+            <p className="mx-auto mt-2 max-w-xl text-sm font-semibold text-zinc-400">
+              Algunos productos destacados para que veas el estilo Bambucha.
             </p>
           </div>
 
-          <h2 className="text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] sm:text-6xl lg:text-7xl">
-            Elige tu próximo{" "}
-            <span className="bg-gradient-to-r from-yellow-300 via-orange-400 to-red-500 bg-clip-text text-transparent">
-              antojo
-            </span>
-          </h2>
-
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-zinc-300 sm:text-lg">
-            Arma tu pedido con perros, hamburguesas, bebidas y extras. Revisa
-            el precio en dólares y bolívares, agrega al carrito y pide directo
-            por WhatsApp.
-          </p>
-        </motion.div>
-
-        <div className="mb-10 rounded-[1.7rem] border border-white/10 bg-black/45 p-3 shadow-2xl shadow-black/30 backdrop-blur-xl">
-          <div className="flex gap-3 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {categories.map((category) => {
-              const isActive = selectedCategory === category
-
-              return (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`shrink-0 rounded-full border px-5 py-3 text-sm font-black uppercase transition ${
-                    isActive
-                      ? "border-yellow-400 bg-yellow-400 text-black shadow-lg shadow-yellow-950/30"
-                      : "border-white/10 bg-zinc-950/90 text-zinc-300 hover:border-yellow-400 hover:text-yellow-400"
-                  }`}
-                >
-                  {category}
-                </button>
-              )
-            })}
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {sampleProducts.map((product) => (
+              <ProductCard
+                key={`sample-${product.id}`}
+                product={product}
+                onAddToCart={onAddToCart}
+                exchangeRate={exchangeRate}
+              />
+            ))}
           </div>
         </div>
 
-        <motion.div layout className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <AnimatePresence mode="popLayout">
-            {filteredProducts.map((product, index) => (
-              <ProductCard
-                key={product.id}
-                id={product.id}
-                name={product.name}
-                category={product.category}
-                description={product.description}
-                price={product.price}
-                image={product.image}
-                exchangeRate={exchangeRate}
-                onAddToCart={onAddToCart}
-                index={index}
-              />
+        <div className="-mx-4 mb-8 overflow-x-auto px-4 pb-2 sm:mx-0 sm:mb-10 sm:overflow-visible sm:px-0">
+          <div className="flex min-w-max gap-2 sm:min-w-0 sm:flex-wrap sm:justify-center sm:gap-3">
+            {allCategories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`rounded-full border px-4 py-2.5 text-xs font-black uppercase transition sm:px-5 sm:py-3 sm:text-sm ${
+                  selectedCategory === category
+                    ? "border-yellow-400 bg-gradient-to-r from-red-700 via-orange-500 to-yellow-400 text-black shadow-[0_0_22px_rgba(255,90,0,0.35)]"
+                    : "border-orange-500/30 bg-black/60 text-orange-300 hover:border-orange-400 hover:text-yellow-300"
+                }`}
+              >
+                {category}
+              </button>
             ))}
-          </AnimatePresence>
-        </motion.div>
+          </div>
+        </div>
+
+        <p className="mb-5 text-center text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 sm:hidden">
+          {filteredProducts.length} productos
+        </p>
+
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+          {filteredProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              onAddToCart={onAddToCart}
+              exchangeRate={exchangeRate}
+            />
+          ))}
+        </div>
       </div>
     </section>
   )

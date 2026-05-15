@@ -2,14 +2,17 @@
 
 import { useEffect, useState } from "react"
 
-const CART_STORAGE_KEY = "burger_club_cart"
+const CART_STORAGE_KEY = "bambucha_cart_v3"
 
 export type CartItem = {
   id: number
   name: string
   price: number
   image: string
+  category: string
   quantity: number
+  note?: string
+  noteEnabled?: boolean
 }
 
 export type ProductToAdd = {
@@ -17,6 +20,33 @@ export type ProductToAdd = {
   name: string
   price: number
   image: string
+  category: string
+}
+
+function normalizeCartItems(items: unknown): CartItem[] {
+  if (!Array.isArray(items)) return []
+
+  return items
+    .filter((item) => {
+      return (
+        item &&
+        typeof item === "object" &&
+        "id" in item &&
+        "name" in item &&
+        "price" in item
+      )
+    })
+    .map((item: any) => ({
+      id: Number(item.id),
+      name: String(item.name),
+      price: Number(item.price),
+      image: String(item.image ?? ""),
+      category: String(item.category ?? ""),
+      quantity: Number(item.quantity ?? 1),
+      note: String(item.note ?? ""),
+      noteEnabled: Boolean(item.noteEnabled ?? false),
+    }))
+    .filter((item) => item.id && item.name && item.price >= 0)
 }
 
 export function useCart() {
@@ -27,7 +57,7 @@ export function useCart() {
       const savedCart = localStorage.getItem(CART_STORAGE_KEY)
 
       if (savedCart) {
-        setItems(JSON.parse(savedCart))
+        setItems(normalizeCartItems(JSON.parse(savedCart)))
       }
     } catch {
       setItems([])
@@ -50,7 +80,19 @@ export function useCart() {
         )
       }
 
-      return [...currentItems, { ...product, quantity: 1 }]
+      return [
+        ...currentItems,
+        {
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          category: product.category,
+          quantity: 1,
+          note: "",
+          noteEnabled: false,
+        },
+      ]
     })
   }
 
@@ -76,6 +118,26 @@ export function useCart() {
     )
   }
 
+  function updateItemNote(id: number, note: string) {
+    setItems((currentItems) =>
+      currentItems.map((item) => (item.id === id ? { ...item, note } : item))
+    )
+  }
+
+  function updateItemNoteEnabled(id: number, noteEnabled: boolean) {
+    setItems((currentItems) =>
+      currentItems.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              noteEnabled,
+              note: noteEnabled ? item.note ?? "" : "",
+            }
+          : item
+      )
+    )
+  }
+
   function clearCart() {
     setItems([])
   }
@@ -93,6 +155,8 @@ export function useCart() {
     removeItem,
     increaseQuantity,
     decreaseQuantity,
+    updateItemNote,
+    updateItemNoteEnabled,
     clearCart,
     totalItems,
     totalPrice,
