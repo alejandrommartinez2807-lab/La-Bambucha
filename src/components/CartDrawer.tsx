@@ -1,375 +1,319 @@
 "use client"
 
-import {
-  MessageCircle,
-  Minus,
-  Plus,
-  ShoppingCart,
-  Trash2,
-  X,
-  StickyNote,
-} from "lucide-react"
-import type { CartItem } from "@/hooks/useCart"
+import { FileText, MessageCircle, Minus, Plus, Trash2, X } from "lucide-react"
+
+type CartItem = {
+  id: number
+  name: string
+  price: number
+  image: string
+  quantity: number
+  category?: string
+  note?: string
+  noteEnabled?: boolean
+}
 
 type CartDrawerProps = {
-  items: CartItem[]
-  totalPrice: number
   isOpen: boolean
   onClose: () => void
+  items: CartItem[]
+  totalPrice: number
+  removeItem: (id: number) => void
   increaseQuantity: (id: number) => void
   decreaseQuantity: (id: number) => void
-  removeItem: (id: number) => void
-  updateItemNote: (id: number, note: string) => void
-  updateItemNoteEnabled: (id: number, noteEnabled: boolean) => void
-  exchangeRate: number
+  updateItemNote?: (id: number, note: string) => void
+  updateItemNoteEnabled?: (id: number, enabled: boolean) => void
+  exchangeRate: number | null
 }
 
-const NON_CUSTOMIZABLE_CATEGORIES = ["bebidas"]
-
-function canCustomizeItem(item: CartItem) {
-  return !NON_CUSTOMIZABLE_CATEGORIES.includes(item.category.toLowerCase())
-}
-
-function formatNumber(value: number) {
+function formatUsd(value: number) {
   return new Intl.NumberFormat("es-VE", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(value)
 }
 
-function formatRef(value: number) {
-  return formatNumber(value)
-}
-
 function formatBs(value: number) {
-  return formatNumber(value)
+  return new Intl.NumberFormat("es-VE", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(value)
 }
 
-function buildItemLine(item: CartItem, index: number, exchangeRate: number) {
-  const subtotalRef = item.price * item.quantity
-  const subtotalBs =
-    exchangeRate && exchangeRate > 0 ? subtotalRef * exchangeRate : null
+function buildWhatsAppMessage(items: CartItem[], totalPrice: number, exchangeRate: number | null) {
+  const lines = items.map((item) => {
+    const subtotal = item.price * item.quantity
+    const noteText =
+      item.noteEnabled && item.note?.trim()
+        ? `\n   Nota: ${item.note.trim()}`
+        : ""
 
-  const note = item.note?.trim()
+    return `• ${item.name} x${item.quantity} — $${formatUsd(subtotal)}${noteText}`
+  })
 
-  return `${index + 1}. ${item.name}
-Cantidad: ${item.quantity}
-Precio unitario: Ref. ${formatRef(item.price)}
-Subtotal: Ref. ${formatRef(subtotalRef)}${
-    subtotalBs ? `\nSubtotal Bs.: ${formatBs(subtotalBs)}` : ""
-  }${
-    canCustomizeItem(item) && item.noteEnabled && note
-      ? `\nNota: ${note}`
-      : ""
-  }`
+  const bsTotal = exchangeRate ? totalPrice * exchangeRate : null
+
+  return encodeURIComponent(
+    [
+      "Hola, quiero hacer este pedido en La Bambucha:",
+      "",
+      ...lines,
+      "",
+      `Total: $${formatUsd(totalPrice)}`,
+      bsTotal ? `Aprox. Bs. ${formatBs(bsTotal)}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n"),
+  )
 }
 
 export default function CartDrawer({
-  items,
-  totalPrice,
   isOpen,
   onClose,
+  items,
+  totalPrice,
+  removeItem,
   increaseQuantity,
   decreaseQuantity,
-  removeItem,
   updateItemNote,
   updateItemNoteEnabled,
   exchangeRate,
 }: CartDrawerProps) {
-  const totalBs =
-    exchangeRate && exchangeRate > 0 ? totalPrice * exchangeRate : null
+  const hasItems = items.length > 0
+  const totalBs = exchangeRate ? totalPrice * exchangeRate : 0
 
-  const whatsappMessage = encodeURIComponent(
-    `LA BAMBUCHA GRILL BURGER
-Nuevo pedido
-
-------------------------------
-Productos
-
-${items
-  .map((item, index) => buildItemLine(item, index, exchangeRate))
-  .join("\n\n")}
-
-------------------------------
-Total: Ref. ${formatRef(totalPrice)}${
-      totalBs ? `\nTotal aprox. Bs.: ${formatBs(totalBs)}` : ""
-    }${
-      exchangeRate && exchangeRate > 0
-        ? `\nTasa usada: Bs. ${formatBs(exchangeRate)}`
-        : ""
-    }`
-  )
+  const whatsappHref = `https://wa.me/584244721722?text=${buildWhatsAppMessage(
+    items,
+    totalPrice,
+    exchangeRate,
+  )}`
 
   return (
     <>
       {isOpen && (
         <button
-          onClick={onClose}
-          className="fixed inset-0 z-[80] bg-black/70 backdrop-blur-sm"
           aria-label="Cerrar carrito"
+          onClick={onClose}
+          className="fixed inset-0 z-[80] bg-black/50 backdrop-blur-[2px]"
         />
       )}
 
       <aside
-        className={`fixed right-0 top-0 z-[90] h-full w-full max-w-md border-l border-orange-500/25 bg-[#080101] text-white shadow-[-20px_0_60px_rgba(0,0,0,0.65)] transition-transform duration-300 ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={[
+          "fixed right-0 top-0 z-[90] flex h-dvh w-full max-w-[520px] flex-col overflow-hidden border-l border-yellow-500/20",
+          "bg-[linear-gradient(180deg,#2b0802_0%,#120100_38%,#050000_100%)] text-white shadow-[-18px_0_55px_rgba(0,0,0,0.55)]",
+          "transition-transform duration-300 ease-out",
+          isOpen ? "translate-x-0" : "translate-x-full",
+        ].join(" ")}
       >
-        <div className="flex h-full flex-col">
-          <div className="flex items-center justify-between border-b border-orange-500/20 bg-gradient-to-r from-red-950 via-black to-red-950 px-5 py-5">
+        <div className="relative overflow-hidden border-b border-yellow-500/15 bg-[linear-gradient(90deg,#5b1205_0%,#2a0501_48%,#7b1706_100%)] px-7 py-7">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,198,43,0.18),transparent_38%)]" />
+
+          <div className="relative flex items-center justify-between gap-4">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.3em] text-orange-400">
+              <p className="text-xs font-black uppercase tracking-[0.38em] text-yellow-400">
                 La Bambucha
               </p>
-
-              <h2 className="flex items-center gap-2 text-2xl font-black uppercase">
-                <ShoppingCart className="text-yellow-400" size={24} />
+              <h2 className="mt-1 flex items-center gap-3 text-4xl font-black uppercase leading-none text-white">
+                <span className="text-yellow-400">
+                  <ShoppingCartIcon />
+                </span>
                 Tu pedido
               </h2>
             </div>
 
             <button
               onClick={onClose}
-              className="rounded-full border border-orange-500/30 bg-black/60 p-2 text-orange-300 transition hover:bg-orange-500 hover:text-black"
-              aria-label="Cerrar carrito"
+              aria-label="Cerrar"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-yellow-400/25 bg-black/25 text-yellow-100 transition hover:bg-yellow-400 hover:text-[#431000]"
             >
-              <X size={22} />
+              <X size={26} />
             </button>
           </div>
+        </div>
 
-          <div className="flex-1 overflow-y-auto px-5 py-5">
-            {items.length === 0 ? (
-              <div className="flex h-full flex-col items-center justify-center text-center">
-                <img
-                  src="/logo-bambucha.png"
-                  alt="La Bambucha Grill Burger"
-                  className="mb-6 h-32 w-32 object-contain opacity-80 drop-shadow-[0_0_25px_rgba(255,90,0,0.6)]"
-                />
+        <div className="flex-1 overflow-y-auto px-5 py-6">
+          {!hasItems ? (
+            <div className="flex min-h-[520px] flex-col items-center justify-center text-center">
+              <img
+                src="/logo-bambucha.png"
+                alt="La Bambucha"
+                className="mb-8 h-28 w-28 object-contain drop-shadow-[0_0_35px_rgba(255,119,0,0.35)]"
+              />
+              <h3 className="text-3xl font-black uppercase text-white">
+                Tu carrito está vacío
+              </h3>
+              <p className="mt-4 max-w-sm text-lg font-medium leading-7 text-yellow-50/65">
+                Agrega combos, hamburguesas, perritos o pepitos para preparar tu pedido.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-5">
+              {items.map((item) => {
+                const subtotal = item.price * item.quantity
+                const subtotalBs = exchangeRate ? subtotal * exchangeRate : 0
 
-                <h3 className="text-2xl font-black uppercase text-white">
-                  Tu carrito está vacío
-                </h3>
+                return (
+                  <article
+                    key={item.id}
+                    className="overflow-hidden rounded-[1.7rem] border border-yellow-500/18 bg-[linear-gradient(135deg,#2a0702_0%,#160100_48%,#3f0b03_100%)] p-4 shadow-[0_14px_34px_rgba(0,0,0,0.35)]"
+                  >
+                    <div className="grid grid-cols-[92px_1fr] gap-4">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="h-[92px] w-[92px] rounded-2xl object-cover"
+                      />
 
-                <p className="mt-3 max-w-xs text-sm text-zinc-400">
-                  Agrega combos, hamburguesas, perritos o pepitos para preparar
-                  tu pedido.
-                </p>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                {items.map((item) => {
-                  const showNoteOption = canCustomizeItem(item)
-                  const noteIsOpen = Boolean(item.noteEnabled)
-                  const itemSubtotalRef = item.price * item.quantity
-                  const itemSubtotalBs =
-                    exchangeRate && exchangeRate > 0
-                      ? itemSubtotalRef * exchangeRate
-                      : null
+                      <div className="min-w-0">
+                        <h3 className="line-clamp-2 text-xl font-black uppercase leading-tight text-white">
+                          {item.name}
+                        </h3>
 
-                  return (
-                    <div
-                      key={item.id}
-                      className="rounded-2xl border border-orange-500/20 bg-gradient-to-b from-[#170505] to-black p-4"
-                    >
-                      <div className="flex gap-4">
-                        <div className="h-20 w-20 overflow-hidden rounded-xl bg-black">
-                          <img
-                            src={item.image || "/logo-bambucha.png"}
-                            alt={item.name}
-                            className="h-full w-full object-cover"
-                            onError={(event) => {
-                              event.currentTarget.onerror = null
-                              event.currentTarget.src = "/logo-bambucha.png"
-                              event.currentTarget.className =
-                                "h-full w-full object-contain p-3"
-                            }}
-                          />
-                        </div>
+                        <p className="mt-1 text-lg font-black text-yellow-300">
+                          Ref. {formatUsd(item.price)}
+                        </p>
 
-                        <div className="min-w-0 flex-1">
-                          <h3 className="line-clamp-2 font-black uppercase text-white">
-                            {item.name}
-                          </h3>
-
-                          <p className="mt-1 text-sm font-black text-yellow-400">
-                            Ref. {formatRef(item.price)}
-                          </p>
-
-                          <div className="mt-2 rounded-xl border border-orange-500/15 bg-black/40 px-3 py-2">
-                            <div className="flex items-center justify-between gap-3">
-                              <span className="text-[11px] font-black uppercase tracking-[0.18em] text-orange-400">
-                                Subtotal
-                              </span>
-
-                              <span className="text-sm font-black text-yellow-400">
-                                Ref. {formatRef(itemSubtotalRef)}
-                              </span>
-                            </div>
-
-                            {itemSubtotalBs && (
-                              <div className="mt-1 flex items-center justify-between gap-3">
-                                <span className="text-[11px] font-bold text-zinc-500">
-                                  En bolívares
-                                </span>
-
-                                <span className="text-sm font-black text-zinc-200">
-                                  Bs. {formatBs(itemSubtotalBs)}
-                                </span>
-                              </div>
-                            )}
-                          </div>
-
-                          <div className="mt-3 flex items-center justify-between gap-3">
-                            <div className="flex items-center rounded-full border border-orange-500/25 bg-black/60">
-                              <button
-                                onClick={() => {
-                                  if (item.quantity <= 1) {
-                                    removeItem(item.id)
-                                  } else {
-                                    decreaseQuantity(item.id)
-                                  }
-                                }}
-                                className="p-2 text-orange-300 transition hover:text-yellow-300"
-                                aria-label="Disminuir cantidad"
-                              >
-                                <Minus size={16} />
-                              </button>
-
-                              <span className="min-w-8 text-center text-sm font-black">
-                                {item.quantity}
-                              </span>
-
-                              <button
-                                onClick={() => increaseQuantity(item.id)}
-                                className="p-2 text-orange-300 transition hover:text-yellow-300"
-                                aria-label="Aumentar cantidad"
-                              >
-                                <Plus size={16} />
-                              </button>
-                            </div>
-
-                            <button
-                              onClick={() => removeItem(item.id)}
-                              className="rounded-full border border-red-500/30 bg-red-950/40 p-2 text-red-300 transition hover:bg-red-600 hover:text-white"
-                              aria-label="Eliminar producto"
-                            >
-                              <Trash2 size={17} />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-
-                      {showNoteOption && (
-                        <div className="mt-4 rounded-2xl border border-orange-500/20 bg-black/45 p-3">
-                          <label
-                            htmlFor={`note-check-${item.id}`}
-                            className="flex cursor-pointer items-center justify-between gap-3"
-                          >
-                            <span className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.16em] text-orange-400">
-                              <StickyNote size={15} />
-                              Agregar nota
+                        <div className="mt-3 rounded-2xl border border-yellow-500/12 bg-black/20 p-3">
+                          <div className="flex items-center justify-between gap-3">
+                            <span className="text-xs font-black uppercase tracking-[0.22em] text-orange-400">
+                              Subtotal
                             </span>
+                            <span className="text-lg font-black text-yellow-300">
+                              Ref. {formatUsd(subtotal)}
+                            </span>
+                          </div>
 
-                            <input
-                              id={`note-check-${item.id}`}
-                              type="checkbox"
-                              checked={noteIsOpen}
-                              onChange={(event) =>
-                                updateItemNoteEnabled(
-                                  item.id,
-                                  event.target.checked
-                                )
-                              }
-                              className="h-5 w-5 cursor-pointer accent-orange-500"
-                            />
-                          </label>
-
-                          {noteIsOpen && (
-                            <div className="mt-3">
-                              <textarea
-                                id={`note-${item.id}`}
-                                value={item.note ?? ""}
-                                onChange={(event) =>
-                                  updateItemNote(item.id, event.target.value)
-                                }
-                                maxLength={140}
-                                rows={3}
-                                placeholder="Ej: Sin cebolla, sin tomate, poca salsa, sin picante..."
-                                className="w-full resize-none rounded-xl border border-orange-500/20 bg-[#050101] px-3 py-3 text-sm font-semibold text-white outline-none placeholder:text-zinc-600 focus:border-orange-400"
-                              />
-
-                              <div className="mt-2 flex items-center justify-between gap-3">
-                                <p className="text-[11px] font-semibold text-zinc-500">
-                                  Indica ingredientes que quieras quitar o
-                                  ajustar.
-                                </p>
-
-                                <span className="shrink-0 text-[11px] font-black text-zinc-500">
-                                  {(item.note ?? "").length}/140
-                                </span>
-                              </div>
+                          {exchangeRate && (
+                            <div className="mt-2 flex items-center justify-between gap-3 text-sm font-bold text-yellow-50/70">
+                              <span>En bolívares</span>
+                              <span>Bs. {formatBs(subtotalBs)}</span>
                             </div>
                           )}
                         </div>
-                      )}
+                      </div>
                     </div>
-                  )
-                })}
+
+                    <div className="mt-4 flex items-center justify-between gap-3">
+                      <div className="flex items-center rounded-full border border-yellow-500/18 bg-black/25">
+                        <button
+                          onClick={() => decreaseQuantity(item.id)}
+                          className="flex h-10 w-12 items-center justify-center text-yellow-200 transition hover:text-yellow-400"
+                          aria-label="Disminuir cantidad"
+                        >
+                          <Minus size={18} />
+                        </button>
+
+                        <span className="min-w-10 text-center text-lg font-black text-white">
+                          {item.quantity}
+                        </span>
+
+                        <button
+                          onClick={() => increaseQuantity(item.id)}
+                          className="flex h-10 w-12 items-center justify-center text-yellow-200 transition hover:text-yellow-400"
+                          aria-label="Aumentar cantidad"
+                        >
+                          <Plus size={18} />
+                        </button>
+                      </div>
+
+                      <button
+                        onClick={() => removeItem(item.id)}
+                        className="flex h-11 w-11 items-center justify-center rounded-full bg-red-950/70 text-red-200 transition hover:bg-red-700 hover:text-white"
+                        aria-label="Eliminar producto"
+                      >
+                        <Trash2 size={20} />
+                      </button>
+                    </div>
+
+                    {updateItemNoteEnabled && updateItemNote && (
+                      <div className="mt-4 rounded-2xl border border-yellow-500/14 bg-black/20 p-4">
+                        <label className="flex cursor-pointer items-center justify-between gap-3">
+                          <span className="flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-orange-300">
+                            <FileText size={18} />
+                            Agregar nota
+                          </span>
+
+                          <input
+                            type="checkbox"
+                            checked={Boolean(item.noteEnabled)}
+                            onChange={(event) =>
+                              updateItemNoteEnabled(item.id, event.target.checked)
+                            }
+                            className="h-6 w-6 accent-yellow-400"
+                          />
+                        </label>
+
+                        {item.noteEnabled && (
+                          <textarea
+                            value={item.note ?? ""}
+                            onChange={(event) =>
+                              updateItemNote(item.id, event.target.value)
+                            }
+                            placeholder="Ej: sin cebolla, sin pepinillo, salsa aparte..."
+                            className="mt-4 min-h-[88px] w-full resize-none rounded-2xl border border-yellow-500/15 bg-[#170301] px-4 py-3 text-sm font-semibold text-white outline-none placeholder:text-yellow-50/35 focus:border-yellow-400"
+                          />
+                        )}
+                      </div>
+                    )}
+                  </article>
+                )
+              })}
+            </div>
+          )}
+        </div>
+
+        <div className="border-t border-yellow-500/15 bg-[linear-gradient(180deg,#1b0301_0%,#090000_100%)] px-5 py-5">
+          <div className="rounded-[1.6rem] border border-yellow-500/18 bg-[linear-gradient(135deg,#2e0803_0%,#170100_60%,#431003_100%)] p-5 shadow-[0_12px_32px_rgba(0,0,0,0.35)]">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-lg font-black uppercase text-yellow-50/85">
+                  Total
+                </p>
+                {exchangeRate && (
+                  <p className="mt-2 text-sm font-bold text-yellow-50/55">
+                    Aprox. Bs. {formatBs(totalBs)}
+                  </p>
+                )}
+              </div>
+
+              <p className="text-4xl font-black text-yellow-300">
+                Ref. {formatUsd(totalPrice)}
+              </p>
+            </div>
+
+            {exchangeRate && (
+              <div className="mt-4 rounded-2xl border border-yellow-500/12 bg-black/20 p-4 text-right">
+                <p className="text-xs font-black uppercase tracking-[0.24em] text-orange-300">
+                  Tasa usada
+                </p>
+                <p className="mt-1 text-lg font-black text-yellow-300">
+                  Bs. {formatBs(exchangeRate)}
+                </p>
               </div>
             )}
           </div>
 
-          <div className="border-t border-orange-500/20 bg-black px-5 py-5">
-            <div className="mb-4 rounded-2xl border border-orange-500/25 bg-[#150505] p-4">
-              <div className="flex items-center justify-between">
-                <span className="font-black uppercase text-zinc-300">
-                  Total
-                </span>
-
-                <span className="text-2xl font-black text-yellow-400">
-                  Ref. {formatRef(totalPrice)}
-                </span>
-              </div>
-
-              {totalBs && (
-                <div className="mt-3 space-y-2">
-                  <p className="text-right text-sm font-bold text-zinc-400">
-                    Aprox. Bs. {formatBs(totalBs)}
-                  </p>
-
-                  <div className="rounded-xl border border-orange-500/20 bg-black/45 px-3 py-2 text-right">
-                    <p className="text-[10px] font-black uppercase tracking-[0.22em] text-orange-400">
-                      Tasa usada
-                    </p>
-
-                    <p className="mt-1 text-sm font-black text-yellow-400">
-                      Bs. {formatBs(exchangeRate)}
-                    </p>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <a
-              href={
-                items.length > 0
-                  ? `https://wa.me/584244721722?text=${whatsappMessage}`
-                  : "https://wa.me/584244721722"
-              }
-              target="_blank"
-              rel="noreferrer"
-              className={`flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-center font-black uppercase shadow-[0_0_25px_rgba(255,90,0,0.3)] transition ${
-                items.length > 0
-                  ? "bg-gradient-to-r from-red-700 via-orange-500 to-yellow-400 text-black hover:scale-[1.02]"
-                  : "cursor-not-allowed bg-zinc-800 text-zinc-500"
-              }`}
-            >
-              <MessageCircle size={22} />
-              Enviar pedido
-            </a>
-          </div>
+          <a
+            href={hasItems ? whatsappHref : undefined}
+            target={hasItems ? "_blank" : undefined}
+            rel={hasItems ? "noreferrer" : undefined}
+            className={[
+              "mt-5 flex h-16 items-center justify-center gap-3 rounded-full text-lg font-black uppercase transition",
+              hasItems
+                ? "bg-[linear-gradient(90deg,#e50914_0%,#ff7a00_48%,#ffd400_100%)] text-black shadow-[0_16px_35px_rgba(0,0,0,0.32)] hover:scale-[1.02]"
+                : "pointer-events-none bg-white/12 text-white/35",
+            ].join(" ")}
+          >
+            <MessageCircle size={27} />
+            Enviar pedido
+          </a>
         </div>
       </aside>
     </>
   )
+}
+
+function ShoppingCartIcon() {
+  return <span className="text-yellow-400">🛒</span>
 }
