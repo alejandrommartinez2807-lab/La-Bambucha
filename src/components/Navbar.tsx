@@ -7,7 +7,7 @@ type NavbarProps = {
   onOpenCart: () => void
 }
 
-const navLinks = [
+const desktopLinks = [
   { label: "Inicio", href: "#inicio" },
   { label: "Menú", href: "#menu" },
   { label: "Ubicación", href: "#ubicacion" },
@@ -20,10 +20,21 @@ const navLinks = [
   },
 ]
 
+const mobileLinks = [
+  { label: "Menú", href: "#menu" },
+  { label: "Ubicación", href: "#ubicacion" },
+  { label: "Reseña", href: "#reseña" },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/la_bambucha_burguer/",
+    external: true,
+  },
+]
+
 export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
   return (
-    <header className="sticky top-0 z-50 w-full">
-      <div className="border-b border-yellow-300/25 bg-[linear-gradient(90deg,#9b0000_0%,#d73700_42%,#e0a916_100%)] text-[#fff3cf]">
+    <header className="sticky top-0 z-50 w-full overflow-hidden bg-[#9b5b00] shadow-[0_10px_30px_rgba(93,43,0,0.28)]">
+      <div className="bg-[linear-gradient(90deg,#990000_0%,#d63600_45%,#d9a716_100%)] text-[#fff6d7]">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-xs font-black uppercase tracking-[0.08em] sm:text-sm">
           <a
             href="tel:04244721722"
@@ -45,34 +56,34 @@ export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
         </div>
       </div>
 
-      <div className="border-b border-[#b96b00]/35 bg-[linear-gradient(90deg,#6b3500_0%,#935900_45%,#b97900_100%)] shadow-[0_10px_34px_rgba(96,43,0,0.28)]">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4">
+      <div className="bg-[linear-gradient(90deg,#6d3500_0%,#9a6100_52%,#b97800_100%)]">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4">
           <a href="#inicio" className="flex min-w-0 items-center gap-3">
             <img
               src="/logo-bambucha.png"
               alt="La Bambucha Grill Burger"
-              className="h-14 w-14 rounded-full object-contain drop-shadow-[0_0_18px_rgba(255,120,0,0.55)] sm:h-16 sm:w-16"
+              className="h-16 w-16 shrink-0 object-contain drop-shadow-[0_0_18px_rgba(255,122,0,0.55)] sm:h-16 sm:w-16"
             />
 
             <div className="min-w-0">
-              <p className="truncate text-2xl font-black uppercase leading-none tracking-[-0.04em] text-white drop-shadow-[0_2px_0_rgba(70,20,0,0.35)]">
+              <p className="truncate text-[1.55rem] font-black uppercase leading-none tracking-[-0.05em] text-white drop-shadow-[0_3px_0_rgba(70,22,0,0.32)] sm:text-2xl">
                 La Bambucha
               </p>
-              <p className="mt-1 text-sm font-black uppercase tracking-[0.32em] text-[#ffd56e]">
+              <p className="mt-1 text-sm font-black uppercase tracking-[0.32em] text-[#ffd96e]">
                 Grill Burger
               </p>
             </div>
           </a>
 
           <nav className="hidden items-center gap-7 lg:flex">
-            {navLinks.map((link) =>
+            {desktopLinks.map((link) =>
               link.external ? (
                 <a
                   key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-sm font-black uppercase tracking-[0.12em] text-white transition hover:text-[#ffd56e]"
+                  className="text-sm font-black uppercase tracking-[0.12em] text-white transition hover:text-[#ffd96e]"
                 >
                   {link.label}
                 </a>
@@ -80,7 +91,7 @@ export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-sm font-black uppercase tracking-[0.12em] text-white transition hover:text-[#ffd56e]"
+                  className="text-sm font-black uppercase tracking-[0.12em] text-white transition hover:text-[#ffd96e]"
                 >
                   {link.label}
                 </a>
@@ -90,7 +101,7 @@ export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
 
           <button
             onClick={onOpenCart}
-            className="relative inline-flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-red-700 via-orange-500 to-yellow-400 text-white shadow-[0_0_24px_rgba(220,92,0,0.40)] transition hover:scale-105"
+            className="relative inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-[1.15rem] bg-gradient-to-br from-red-700 via-orange-500 to-yellow-400 text-white shadow-[0_0_24px_rgba(220,92,0,0.40)] transition hover:scale-105 sm:h-14 sm:w-14"
             aria-label="Abrir carrito"
           >
             <ShoppingCart size={26} />
@@ -100,16 +111,16 @@ export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
           </button>
         </div>
 
-        <div className="overflow-x-auto border-t border-yellow-300/20 bg-[linear-gradient(90deg,#8b0000_0%,#b84400_45%,#c98500_100%)] lg:hidden">
-          <nav className="flex min-w-max items-center justify-start gap-6 px-4 py-3">
-            {navLinks.map((link) =>
+        <div className="lg:hidden">
+          <nav className="grid grid-cols-4 border-t border-yellow-300/18 bg-[linear-gradient(90deg,#9b0000_0%,#bf3d00_45%,#bd7c00_100%)]">
+            {mobileLinks.map((link) =>
               link.external ? (
                 <a
                   key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="whitespace-nowrap text-sm font-black uppercase tracking-[0.12em] text-white transition hover:text-[#ffe08f]"
+                  className="flex h-12 items-center justify-center border-r border-yellow-200/10 px-2 text-center text-[0.72rem] font-black uppercase tracking-[0.12em] text-white last:border-r-0"
                 >
                   {link.label}
                 </a>
@@ -117,7 +128,7 @@ export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="whitespace-nowrap text-sm font-black uppercase tracking-[0.12em] text-white transition hover:text-[#ffe08f]"
+                  className="flex h-12 items-center justify-center border-r border-yellow-200/10 px-2 text-center text-[0.72rem] font-black uppercase tracking-[0.12em] text-white last:border-r-0"
                 >
                   {link.label}
                 </a>
