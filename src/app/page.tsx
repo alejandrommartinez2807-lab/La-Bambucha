@@ -19,7 +19,7 @@ export default function Home() {
   const [isCartOpen, setIsCartOpen] = useState(false)
 
   return (
-    <main className="min-h-screen bg-[#050101] text-white">
+    <main className="min-h-screen bg-[#d69a00] text-white">
       <Navbar
         totalItems={cart.totalItems}
         onOpenCart={() => setIsCartOpen(true)}
@@ -31,24 +31,24 @@ export default function Home() {
 
       <section
         id="ubicacion"
-        className="relative overflow-hidden border-t border-orange-500/20 bg-[#070101] px-4 py-16 text-white"
+        className="relative overflow-hidden border-t border-yellow-900/20 bg-[#d69a00] px-4 py-16 text-white"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,90,0,0.22),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(255,191,0,0.10),transparent_34%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,230,80,0.55),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(255,79,0,0.36),transparent_36%),linear-gradient(180deg,#e4aa00_0%,#c77d00_48%,#8f2b00_100%)]" />
 
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-black uppercase tracking-[0.35em] text-orange-400">
+            <p className="text-sm font-black uppercase tracking-[0.35em] text-[#2a1200]">
               Ubicación
             </p>
 
-            <h2 className="mt-4 text-4xl font-black uppercase leading-none text-white md:text-6xl">
+            <h2 className="mt-4 text-4xl font-black uppercase leading-none text-white drop-shadow-[0_3px_0_rgba(80,20,0,0.35)] md:text-6xl">
               Ven a probar{" "}
-              <span className="bg-gradient-to-r from-red-600 via-orange-400 to-yellow-300 bg-clip-text text-transparent">
+              <span className="text-[#2a1200] drop-shadow-none">
                 La Bambucha
               </span>
             </h2>
 
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-zinc-300 md:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl text-base font-semibold leading-relaxed text-[#2a1200]/85 md:text-lg">
               Encuéntranos en Google Maps y ven por hamburguesas, perritos,
               pepitos, shawarmas, parrillas, combos y bebidas al estilo
               Bambucha Grill Burger.
@@ -60,10 +60,10 @@ export default function Home() {
               href={GOOGLE_MAPS_REVIEW_URL}
               target="_blank"
               rel="noreferrer"
-              className="group rounded-[2rem] border border-orange-500/25 bg-black/60 p-6 shadow-2xl shadow-black/40 transition hover:-translate-y-1 hover:border-orange-400/60"
+              className="group rounded-[2rem] border border-yellow-200/45 bg-[#2a1200]/88 p-6 shadow-2xl shadow-[#5a1a00]/30 transition hover:-translate-y-1 hover:border-white"
             >
               <div className="flex items-start gap-4">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-r from-red-700 via-orange-500 to-yellow-400 text-black shadow-[0_0_28px_rgba(255,90,0,0.35)]">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-r from-red-700 via-orange-500 to-yellow-300 text-black shadow-[0_0_28px_rgba(255,210,0,0.35)]">
                   <MapPin size={25} />
                 </div>
 
@@ -72,12 +72,12 @@ export default function Home() {
                     Ver ubicación
                   </h3>
 
-                  <p className="mt-2 text-sm leading-relaxed text-zinc-400 md:text-base">
+                  <p className="mt-2 text-sm leading-relaxed text-yellow-50/80 md:text-base">
                     Abre Google Maps, revisa cómo llegar y visítanos para
                     probar el sabor Bambucha.
                   </p>
 
-                  <span className="mt-5 inline-flex rounded-full bg-white px-5 py-3 text-sm font-black uppercase text-black transition group-hover:bg-yellow-400">
+                  <span className="mt-5 inline-flex rounded-full bg-yellow-300 px-5 py-3 text-sm font-black uppercase text-black transition group-hover:bg-white">
                     Abrir Google Maps
                   </span>
                 </div>
@@ -88,10 +88,10 @@ export default function Home() {
               href={GOOGLE_MAPS_REVIEW_URL}
               target="_blank"
               rel="noreferrer"
-              className="group rounded-[2rem] border border-yellow-400/25 bg-black/60 p-6 shadow-2xl shadow-black/40 transition hover:-translate-y-1 hover:border-yellow-400/60"
+              className="group rounded-[2rem] border border-yellow-200/45 bg-[#2a1200]/88 p-6 shadow-2xl shadow-[#5a1a00]/30 transition hover:-translate-y-1 hover:border-white"
             >
               <div className="flex items-start gap-4">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-yellow-400 text-black shadow-[0_0_28px_rgba(255,191,0,0.30)]">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-yellow-300 text-black shadow-[0_0_28px_rgba(255,210,0,0.35)]">
                   <Star size={25} />
                 </div>
 
@@ -100,12 +100,12 @@ export default function Home() {
                     Agregar reseña
                   </h3>
 
-                  <p className="mt-2 text-sm leading-relaxed text-zinc-400 md:text-base">
+                  <p className="mt-2 text-sm leading-relaxed text-yellow-50/80 md:text-base">
                     Si ya probaste La Bambucha, déjanos tu reseña en Google
                     Maps y cuéntanos qué tal estuvo.
                   </p>
 
-                  <span className="mt-5 inline-flex rounded-full bg-gradient-to-r from-red-700 via-orange-500 to-yellow-400 px-5 py-3 text-sm font-black uppercase text-black transition group-hover:scale-105">
+                  <span className="mt-5 inline-flex rounded-full bg-gradient-to-r from-red-700 via-orange-500 to-yellow-300 px-5 py-3 text-sm font-black uppercase text-black transition group-hover:scale-105">
                     Escribir reseña
                   </span>
                 </div>
@@ -117,17 +117,17 @@ export default function Home() {
 
       <section
         id="contacto"
-        className="border-t border-orange-500/20 bg-black px-4 py-12 text-center"
+        className="border-t border-yellow-900/20 bg-[#b96700] px-4 py-12 text-center"
       >
-        <p className="text-sm font-black uppercase tracking-[0.35em] text-orange-400">
+        <p className="text-sm font-black uppercase tracking-[0.35em] text-[#2a1200]">
           La Bambucha Grill Burger
         </p>
 
-        <h2 className="mt-3 text-3xl font-black uppercase text-white md:text-5xl">
+        <h2 className="mt-3 text-3xl font-black uppercase text-white drop-shadow-[0_3px_0_rgba(80,20,0,0.35)] md:text-5xl">
           Haz tu pedido por WhatsApp
         </h2>
 
-        <p className="mx-auto mt-4 max-w-xl text-zinc-300">
+        <p className="mx-auto mt-4 max-w-xl font-semibold text-[#2a1200]/85">
           Combos, hamburguesas, perritos, pepitos, shawarmas, parrillas,
           delicias y bebidas.
         </p>
@@ -136,7 +136,7 @@ export default function Home() {
           href={WHATSAPP_URL}
           target="_blank"
           rel="noreferrer"
-          className="mt-8 inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-red-700 via-orange-500 to-yellow-400 px-8 py-4 font-black uppercase text-black shadow-[0_0_28px_rgba(255,90,0,0.35)] transition hover:scale-105"
+          className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#2a1200] px-8 py-4 font-black uppercase text-yellow-300 shadow-[0_0_28px_rgba(80,20,0,0.35)] transition hover:scale-105"
         >
           <MessageCircle size={20} />
           Pedir ahora
