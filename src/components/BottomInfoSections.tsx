@@ -2,8 +2,8 @@
 
 import { MapPin, MessageCircle, Star } from "lucide-react"
 
-const GOOGLE_MAPS_LINK = "https://maps.google.com"
-const REVIEW_LINK = "https://maps.google.com"
+const GOOGLE_MAPS_LINK = "https://maps.app.goo.gl/EiWggvQSYuMhU66K8"
+const REVIEW_LINK = "https://maps.app.goo.gl/EiWggvQSYuMhU66K8"
 const WHATSAPP_LINK = "https://wa.me/584244721722"
 
 const sections = [
