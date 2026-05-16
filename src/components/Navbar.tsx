@@ -34,11 +34,14 @@ const navItems = [
 export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
   return (
     <header className="sticky top-0 z-50 w-full">
-      <div className="relative overflow-hidden bg-[linear-gradient(90deg,#8b3100_0%,#b86600_48%,#d89a08_100%)] shadow-[0_10px_28px_rgba(0,0,0,0.18)]">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.14),transparent_45%)]" />
+      <div className="relative overflow-hidden bg-[linear-gradient(90deg,#933000_0%,#b85d00_38%,#c98200_68%,#d89a08_100%)] shadow-[0_12px_30px_rgba(0,0,0,0.22)]">
+        {/* brillo general para unir todo */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_55%_0%,rgba(255,226,115,0.24),transparent_42%)]" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#6d1d00]/45 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#5a2d00]/30 to-transparent" />
 
         {/* Logo + carrito */}
-        <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-6 lg:px-8">
+        <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 pb-3 pt-4 sm:px-6 lg:px-8">
           <a href="#inicio" className="flex min-w-0 items-center gap-3">
             <img
               src="/logo-bambucha.png"
@@ -72,14 +75,15 @@ export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
           </button>
         </div>
 
-        {/* Menú estilo limpio como la página blanca */}
-        <div className="relative border-t border-white/10 bg-black/8">
-          <nav className="mx-auto grid max-w-4xl grid-cols-4 items-center px-2 sm:px-6">
+        {/* Menú integrado, sin bloque separado */}
+        <div className="relative mx-auto max-w-7xl px-2 pb-3 sm:px-6 lg:px-8">
+          <nav className="mx-auto grid max-w-4xl grid-cols-4 items-center rounded-[1.4rem] bg-white/[0.045] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-sm">
             {navItems.map((item) => {
               const linkClass = [
-                "flex h-[58px] items-center justify-center text-center",
+                "flex h-[54px] items-center justify-center text-center",
                 "text-[0.74rem] font-black uppercase tracking-[0.14em]",
                 "transition duration-200 hover:bg-white/10",
+                "first:rounded-l-[1.4rem] last:rounded-r-[1.4rem]",
                 "sm:text-sm sm:tracking-[0.18em]",
                 item.className,
               ].join(" ")
