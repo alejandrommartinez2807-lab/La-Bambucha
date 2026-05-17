@@ -380,25 +380,25 @@ export const products = [
     name: "Burger Mixta",
     category: "Hamburguesas",
     description:
-      "Burger mixta con 2 proteínas a gusto entre carne, milanesa de pollo y chorizo, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
+      "Burger mixta con 2 proteínas a gusto entre carne, milanesa de pollo, chorizo y chuleta, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
     price: 9,
     image: "/mixta.png",
   },
   {
     id: 25,
-    name: "Burger Triple de Carne",
+    name: "Burger Triple Con Tres Proteinas",
     category: "Hamburguesas",
     description:
-      "Triple carne de res al carbón, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
+      "Tres proteinas al carbón a su gusto carne,pollo, chorizo y cochino, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
     price: 10,
     image: "/triplecarne.png",
   },
   {
     id: 26,
-    name: "Burger Triple de Pollo",
+    name: "Burger Revienta Dieta",
     category: "Hamburguesas",
     description:
-      "Triple milanesa de pollo al carbón, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
+      "/Burger extrema con carne de res, milanesa de pollo, chorizo y chuleta de 150 g cada una, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft, huevo y papas fritas naturales.",
     price: 10,
     image: "/triplepollo.png",
   },
