@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useState } from "react"
 import { motion } from "motion/react"
 import { Plus, ShoppingCart } from "lucide-react"
@@ -30,6 +31,7 @@ export default function ProductCard({
   onAddToCart,
 }: ProductCardProps) {
   const [added, setAdded] = useState(false)
+  const [imageSrc, setImageSrc] = useState(image || "/logo-bambucha.png")
 
   function handleAddToCart() {
     onAddToCart({
@@ -37,42 +39,43 @@ export default function ProductCard({
       name,
       category,
       price,
-      image,
+      image: imageSrc,
     })
 
     setAdded(true)
 
-    setTimeout(() => {
+    window.setTimeout(() => {
       setAdded(false)
     }, 900)
   }
 
   return (
     <motion.article
-      layout
-      initial={{ opacity: 0, y: 26, scale: 0.96 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 18, scale: 0.96 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.2) }}
-      whileHover={{ y: -6 }}
-      className="group overflow-hidden rounded-[1.8rem] border border-[#5a2a00]/20 bg-[#4a1f00]/92 shadow-2xl shadow-[#6b2a00]/20 backdrop-blur"
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{
+        duration: 0.28,
+        delay: Math.min(index * 0.025, 0.12),
+      }}
+      className="group overflow-hidden rounded-[1.8rem] border border-[#5a2a00]/20 bg-[#4a1f00]/92 shadow-xl shadow-[#6b2a00]/20 transition-transform duration-300 hover:-translate-y-1"
     >
       <div className="relative h-64 overflow-hidden bg-[#120800] sm:h-72">
-        <motion.img
-          src={image || "/logo-bambucha.png"}
+        <Image
+          src={imageSrc}
           alt={name}
-          className="h-full w-full object-cover"
-          whileHover={{ scale: 1.06 }}
-          transition={{ duration: 0.45 }}
-          onError={(event) => {
-            event.currentTarget.src = "/logo-bambucha.png"
+          fill
+          loading={index < 4 ? "eager" : "lazy"}
+          sizes="(max-width: 640px) 92vw, (max-width: 1024px) 48vw, 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          onError={() => {
+            setImageSrc("/logo-bambucha.png")
           }}
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
-        <span className="absolute left-4 top-4 rounded-full border border-yellow-300/25 bg-black/72 px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-yellow-300 backdrop-blur">
+        <span className="absolute left-4 top-4 rounded-full border border-yellow-300/25 bg-black/70 px-3 py-2 text-xs font-black uppercase tracking-[0.18em] text-yellow-300">
           {category}
         </span>
 
@@ -87,7 +90,7 @@ export default function ProductCard({
             </h3>
           </div>
 
-          <div className="min-w-[110px] rounded-[1.4rem] bg-[#f1d42f] px-4 py-3 text-right text-[#1f1100] shadow-xl shadow-yellow-950/20">
+          <div className="min-w-[110px] rounded-[1.4rem] bg-[#f1d42f] px-4 py-3 text-right text-[#1f1100] shadow-lg shadow-yellow-950/20">
             <p className="text-2xl font-black leading-none">
               {formatUSD(price)}
             </p>

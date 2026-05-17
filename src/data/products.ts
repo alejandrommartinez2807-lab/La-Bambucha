@@ -1,17 +1,17 @@
 export const categories = [
   "Combos",
+  "Parrillas",
   "Hamburguesas",
   "Perritos",
   "Pepitos",
   "Shawarma",
-  "Parrillas",
   "Delicias",
   "Bebidas",
 ]
 
 export const products = [
   // =========================
-  // COMBOS
+  // COMBOS ACTUALES
   // =========================
   {
     id: 1,
@@ -27,7 +27,7 @@ export const products = [
     name: "Combo #2",
     category: "Combos",
     description:
-      "4 hamburguesas especiales de carne o pollo + papas fritas + refresco de 1.25 litros.",
+      "4 hamburguesas especiales de carne o pollo + papas fritas naturales + refresco de 1.25 litros.",
     price: 20,
     image: "/burger-normal.jpeg",
   },
@@ -35,7 +35,7 @@ export const products = [
     id: 3,
     name: "Combo #3",
     category: "Combos",
-    description: "4 pepitos + papas fritas + refresco de 1.25 litros.",
+    description: "4 pepitos + papas fritas naturales + refresco de 1.25 litros.",
     price: 20,
     image: "/5pepitos.png",
   },
@@ -43,7 +43,7 @@ export const products = [
     id: 4,
     name: "Combo #4",
     category: "Combos",
-    description: "3 shawarmas + papas fritas + refresco de 1.25 litros.",
+    description: "3 shawarmas + papas fritas naturales + refresco de 1.25 litros.",
     price: 19,
     image: "/shawarmamixto.png",
   },
@@ -52,7 +52,7 @@ export const products = [
     name: "Combo #5",
     category: "Combos",
     description:
-      "2 hamburguesas de pollo crispy + papas fritas + refresco de 1.25 litros.",
+      "2 hamburguesas de pollo crispy + papas fritas naturales + refresco de 1.25 litros.",
     price: 16,
     image: "/crispi.png",
   },
@@ -61,7 +61,7 @@ export const products = [
     name: "Combo #6",
     category: "Combos",
     description:
-      "2 hamburguesas mixtas + papas fritas + refresco de 1.25 litros.",
+      "2 hamburguesas mixtas + papas fritas naturales + refresco de 1.25 litros.",
     price: 18,
     image: "/mixta.png",
   },
@@ -131,13 +131,175 @@ export const products = [
   },
 
   // =========================
+  // COMBOS NUEVOS DEL CLIENTE
+  // =========================
+  {
+    id: 67,
+    name: "Combo Parrillero",
+    category: "Combos",
+    description:
+      "2 parrillas normales de 1 proteína + 1 ración de papas fritas + 1 refresco.",
+    price: 16,
+    image: "/imagenparrilas.png",
+  },
+  {
+    id: 68,
+    name: "Combo Parrillero Súper",
+    category: "Combos",
+    description:
+      "2 parrillas medianas de 2 proteínas + 1 ración de papas fritas + 1 refresco.",
+    price: 18,
+    image: "/imagenparrilas.png",
+  },
+  {
+    id: 69,
+    name: "Combo Parrillero Especial",
+    category: "Combos",
+    description:
+      "2 parrillas grandes de 3 proteínas + 1 ración de papas fritas + 1 refresco.",
+    price: 20,
+    image: "/imagenparrilas.png",
+  },
+  {
+    id: 70,
+    name: "Combo Full Pepito 1 Metro",
+    category: "Combos",
+    description:
+      "1 pepito de 1 metro + 1 ración de papas fritas + 1 refresco.",
+    price: 30,
+    image: "/5pepitos.png",
+  },
+  {
+    id: 71,
+    name: "Combo Full Pepito Metro y Medio",
+    category: "Combos",
+    description:
+      "1 pepito de 1.5 metros + 1 ración de papas fritas + 1 refresco.",
+    price: 35,
+    image: "/7pepitos.png",
+  },
+  {
+    id: 72,
+    name: "Combo Full Pepito 2 Metros",
+    category: "Combos",
+    description:
+      "1 pepito de 2 metros + 1 ración de papas fritas + 1 refresco.",
+    price: 45,
+    image: "/10pepitos.png",
+  },
+  {
+    id: 73,
+    name: "Combo Grill Burger",
+    category: "Combos",
+    description:
+      "2 burgers triples + 1 ración de papas fritas + 1 refresco.",
+    price: 20,
+    image: "/triplecarne.png",
+  },
+  {
+    id: 74,
+    name: "Combo Full Burger",
+    category: "Combos",
+    description:
+      "3 burgers especiales + 1 ración de papas fritas + 1 refresco.",
+    price: 23,
+    image: "/burger-normal.jpeg",
+  },
+  {
+    id: 75,
+    name: "Combo Perrero",
+    category: "Combos",
+    description:
+      "4 perry carne + 1 ración de papas fritas + 1 refresco.",
+    price: 18,
+    image: "/perros especiales.png",
+  },
+  {
+    id: 76,
+    name: "Combo Granjero",
+    category: "Combos",
+    description:
+      "4 granjeros + 1 ración de papas fritas + 1 refresco.",
+    price: 21,
+    image: "/perros especiales.png",
+  },
+  {
+    id: 77,
+    name: "Combo Shawarma",
+    category: "Combos",
+    description:
+      "3 shawarmas especiales + 1 ración de papas fritas + 1 refresco.",
+    price: 22,
+    image: "/shawarmamixto.png",
+  },
+  {
+    id: 78,
+    name: "Combo Resuelve Parrillero",
+    category: "Combos",
+    description:
+      "3 parrillas festival + 1 refresco. Parrillas tipo festival sin papas.",
+    price: 15,
+    image: "/imagenparrilas.png",
+  },
+  {
+    id: 79,
+    name: "Combo Parrilla Familiar",
+    category: "Combos",
+    description:
+      "1 parrilla familiar con carne, pollo, chorizo y cerdo + 1 refresco de 1.25 litros.",
+    price: 28,
+    image: "/parrillafull.png",
+  },
+
+  // =========================
+  // PARRILLAS
+  // =========================
+  {
+    id: 47,
+    name: "Parrilla Normal",
+    category: "Parrillas",
+    description:
+      "Parrilla normal con 250 g de proteína a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales y yuca.",
+    price: 8,
+    image: "/imagenparrilas.png",
+  },
+  {
+    id: 48,
+    name: "Parrilla Mediana",
+    category: "Parrillas",
+    description:
+      "Parrilla mediana con 280 g de proteína a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales y yuca.",
+    price: 9,
+    image: "/imagenparrilas.png",
+  },
+  {
+    id: 49,
+    name: "Parrilla Grande",
+    category: "Parrillas",
+    description:
+      "Parrilla grande con 300 g de proteína a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales y yuca.",
+    price: 10,
+    image: "/imagenparrilas.png",
+  },
+  {
+    id: 50,
+    name: "Parrilla Full",
+    category: "Parrillas",
+    description:
+      "Parrilla full con 500 g de proteínas a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales y yuca. Ideal para 2 personas.",
+    price: 15,
+    image: "/parrillafull.png",
+  },
+
+  // =========================
   // HAMBURGUESAS
   // =========================
   {
     id: 15,
     name: "Normal de Carne",
     category: "Hamburguesas",
-    description: "Hamburguesa clásica de carne estilo Bambucha.",
+    description:
+      "Jugosa carne de res de 100 g al carbón, pan de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz y pepinillo.",
     price: 4,
     image: "/burger-normal.jpeg",
   },
@@ -145,7 +307,8 @@ export const products = [
     id: 16,
     name: "Normal de Pollo",
     category: "Hamburguesas",
-    description: "Hamburguesa clásica de pollo estilo Bambucha.",
+    description:
+      "Milanesa de pollo de 100 g al carbón, pan de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz y pepinillo.",
     price: 4,
     image: "/pollo.png",
   },
@@ -153,7 +316,8 @@ export const products = [
     id: 17,
     name: "Especial de Carne",
     category: "Hamburguesas",
-    description: "Hamburguesa especial de carne con el toque de la casa.",
+    description:
+      "Jugosa carne de res de 150 g al carbón, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
     price: 7,
     image: "/burger-normal.jpeg",
   },
@@ -161,7 +325,8 @@ export const products = [
     id: 18,
     name: "Especial de Pollo",
     category: "Hamburguesas",
-    description: "Hamburguesa especial de pollo con ingredientes de la casa.",
+    description:
+      "Milanesa de pollo de 150 g al carbón, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
     price: 7,
     image: "/pollo.png",
   },
@@ -169,7 +334,8 @@ export const products = [
     id: 19,
     name: "Especial de Chuleta",
     category: "Hamburguesas",
-    description: "Hamburguesa especial con chuleta.",
+    description:
+      "Chuleta de 150 g al carbón, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
     price: 7,
     image: "/burger-normal.jpeg",
   },
@@ -177,7 +343,8 @@ export const products = [
     id: 20,
     name: "Burger de Chorizo",
     category: "Hamburguesas",
-    description: "Burger con chorizo al estilo grill.",
+    description:
+      "Chorizo de 150 g al carbón, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
     price: 7,
     image: "/burger-normal.jpeg",
   },
@@ -185,7 +352,8 @@ export const products = [
     id: 21,
     name: "Burger Pollo Crispy",
     category: "Hamburguesas",
-    description: "Burger de pollo crispy crujiente.",
+    description:
+      "Pollo crispy de 180 g, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
     price: 8,
     image: "/crispi.png",
   },
@@ -193,7 +361,8 @@ export const products = [
     id: 22,
     name: "Burger Doble Carne",
     category: "Hamburguesas",
-    description: "Hamburguesa doble carne.",
+    description:
+      "Doble carne de res al carbón, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
     price: 9,
     image: "/carnedoble.png",
   },
@@ -201,7 +370,8 @@ export const products = [
     id: 23,
     name: "Burger Doble Pollo",
     category: "Hamburguesas",
-    description: "Hamburguesa doble pollo.",
+    description:
+      "Doble milanesa de pollo al carbón, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
     price: 9,
     image: "/doblepollo.png",
   },
@@ -209,7 +379,8 @@ export const products = [
     id: 24,
     name: "Burger Mixta",
     category: "Hamburguesas",
-    description: "Hamburguesa mixta con carne y pollo.",
+    description:
+      "Burger mixta con 2 proteínas a gusto entre carne, milanesa de pollo y chorizo, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
     price: 9,
     image: "/mixta.png",
   },
@@ -217,7 +388,8 @@ export const products = [
     id: 25,
     name: "Burger Triple de Carne",
     category: "Hamburguesas",
-    description: "Hamburguesa triple de carne para los más hambrientos.",
+    description:
+      "Triple carne de res al carbón, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
     price: 10,
     image: "/triplecarne.png",
   },
@@ -225,7 +397,8 @@ export const products = [
     id: 26,
     name: "Burger Triple de Pollo",
     category: "Hamburguesas",
-    description: "Hamburguesa triple de pollo con todo el sabor Bambucha.",
+    description:
+      "Triple milanesa de pollo al carbón, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
     price: 10,
     image: "/triplepollo.png",
   },
@@ -237,7 +410,8 @@ export const products = [
     id: 27,
     name: "Perro Sencillo Pequeño",
     category: "Perritos",
-    description: "Perro caliente sencillo pequeño.",
+    description:
+      "Perro pequeño con salchicha Delipic, cebolla, ensalada, papitas pequeñas y queso.",
     price: 2,
     image: "/perrosnormales.png",
   },
@@ -245,7 +419,8 @@ export const products = [
     id: 28,
     name: "Perro Especial Pequeño",
     category: "Perritos",
-    description: "Perro caliente especial pequeño.",
+    description:
+      "Perro pequeño especial con salchicha Delipic, cebolla, ensalada, papitas pequeñas, queso, maíz y tocineta.",
     price: 2.5,
     image: "/perros especiales.png",
   },
@@ -253,7 +428,8 @@ export const products = [
     id: 29,
     name: "Perro Sencillo Grande",
     category: "Perritos",
-    description: "Perro caliente sencillo grande.",
+    description:
+      "Perro grande con salchicha Delipic, cebolla, ensalada, papitas pequeñas y queso.",
     price: 2.5,
     image: "/perrosnormales.png",
   },
@@ -261,7 +437,8 @@ export const products = [
     id: 30,
     name: "Perro Especial Grande",
     category: "Perritos",
-    description: "Perro caliente especial grande.",
+    description:
+      "Perro grande especial con salchicha Delipic, cebolla, ensalada, papitas pequeñas, queso, maíz, tocineta y papas fritas naturales.",
     price: 3.5,
     image: "/perros especiales.png",
   },
@@ -269,7 +446,8 @@ export const products = [
     id: 31,
     name: "Polaco",
     category: "Perritos",
-    description: "Perro estilo polaco.",
+    description:
+      "Perro polaco con salchicha original Kaiser, cebolla, ensalada, papitas pequeñas, queso, maíz, tocineta y papas fritas naturales.",
     price: 4.5,
     image: "/perros especiales.png",
   },
@@ -277,7 +455,8 @@ export const products = [
     id: 32,
     name: "Chori Perro",
     category: "Perritos",
-    description: "Perro caliente con chorizo.",
+    description:
+      "Chori perro con chorizo, cebolla, ensalada, papitas pequeñas, queso, maíz, tocineta y papas fritas naturales.",
     price: 4.5,
     image: "/perros especiales.png",
   },
@@ -285,7 +464,8 @@ export const products = [
     id: 33,
     name: "Perri Pig",
     category: "Perritos",
-    description: "Perro especial estilo Bambucha.",
+    description:
+      "Perri Pig especial con cebolla, ensalada, papitas pequeñas, mermelada de piña, cerdo al barril, maíz y queso parmesano.",
     price: 4.5,
     image: "/perros especiales.png",
   },
@@ -297,7 +477,8 @@ export const products = [
     id: 34,
     name: "Pepito Mini",
     category: "Pepitos",
-    description: "Pepito mini de 1 proteína.",
+    description:
+      "Pepito mini con proteína a elección: carne, cerdo al barril, churrasco de pollo o chorizo. Incluye lechuga, tomate, maíz, queso, tocineta, pepinillo, salsas y papas fritas naturales.",
     price: 7,
     image: "/pepito.png",
   },
@@ -305,7 +486,8 @@ export const products = [
     id: 35,
     name: "Pepito Mini Mixto",
     category: "Pepitos",
-    description: "Pepito mini mixto.",
+    description:
+      "Pepito mini mixto con proteínas a elección: carne, cerdo al barril, churrasco de pollo o chorizo. Incluye lechuga, tomate, maíz, queso, tocineta, pepinillo, salsas y papas fritas naturales.",
     price: 8,
     image: "/pepito.png",
   },
@@ -313,7 +495,8 @@ export const products = [
     id: 36,
     name: "Pepito de 30 cm",
     category: "Pepitos",
-    description: "Pepito de 30 cm con 1 proteína.",
+    description:
+      "Pepito de 30 cm con proteína a elección: carne, cerdo al barril, churrasco de pollo o chorizo. Incluye lechuga, tomate, maíz, queso, tocineta, pepinillo, salsas y papas fritas naturales.",
     price: 11,
     image: "/pepito.png",
   },
@@ -321,7 +504,8 @@ export const products = [
     id: 37,
     name: "Pepito de 30 cm Mixto",
     category: "Pepitos",
-    description: "Pepito de 30 cm mixto.",
+    description:
+      "Pepito de 30 cm mixto con proteínas a elección: carne, cerdo al barril, churrasco de pollo o chorizo. Incluye lechuga, tomate, maíz, queso, tocineta, pepinillo, salsas y papas fritas naturales.",
     price: 13,
     image: "/pepito.png",
   },
@@ -329,7 +513,8 @@ export const products = [
     id: 38,
     name: "Pepito de 70 cm",
     category: "Pepitos",
-    description: "Pepito de 70 cm con 1 proteína.",
+    description:
+      "Pepito de 70 cm con proteína a elección: carne, cerdo al barril, churrasco de pollo o chorizo. Incluye lechuga, tomate, maíz, queso, tocineta, pepinillo, salsas y papas fritas naturales.",
     price: 16,
     image: "/2pepitos.png",
   },
@@ -337,7 +522,8 @@ export const products = [
     id: 39,
     name: "Pepito de 70 cm Mixto",
     category: "Pepitos",
-    description: "Pepito de 70 cm mixto.",
+    description:
+      "Pepito de 70 cm mixto con proteínas a elección: carne, cerdo al barril, churrasco de pollo o chorizo. Incluye lechuga, tomate, maíz, queso, tocineta, pepinillo, salsas y papas fritas naturales.",
     price: 19,
     image: "/2pepitos.png",
   },
@@ -345,7 +531,8 @@ export const products = [
     id: 40,
     name: "Pepito de 1 Metro",
     category: "Pepitos",
-    description: "Pepito de 1 metro con 1 proteína.",
+    description:
+      "Pepito de 1 metro con proteína a elección: carne, cerdo al barril, churrasco de pollo o chorizo. Incluye lechuga, tomate, maíz, queso, tocineta, pepinillo, salsas y papas fritas naturales.",
     price: 23,
     image: "/5pepitos.png",
   },
@@ -353,7 +540,8 @@ export const products = [
     id: 41,
     name: "Pepito de 1 Metro Mixto",
     category: "Pepitos",
-    description: "Pepito de 1 metro mixto.",
+    description:
+      "Pepito de 1 metro mixto con proteínas a elección: carne, cerdo al barril, churrasco de pollo o chorizo. Incluye lechuga, tomate, maíz, queso, tocineta, pepinillo, salsas y papas fritas naturales.",
     price: 28,
     image: "/7pepitos.png",
   },
@@ -361,7 +549,8 @@ export const products = [
     id: 42,
     name: "Pepito de 2 Metros",
     category: "Pepitos",
-    description: "Pepito gigante de 2 metros con 1 proteína.",
+    description:
+      "Pepito gigante de 2 metros con proteína a elección: carne, cerdo al barril, churrasco de pollo o chorizo. Incluye lechuga, tomate, maíz, queso, tocineta, pepinillo, salsas y papas fritas naturales.",
     price: 37,
     image: "/10pepitos.png",
   },
@@ -369,7 +558,8 @@ export const products = [
     id: 43,
     name: "Pepito de 2 Metros Mixto",
     category: "Pepitos",
-    description: "Pepito gigante de 2 metros mixto.",
+    description:
+      "Pepito gigante de 2 metros mixto con proteínas a elección: carne, cerdo al barril, churrasco de pollo o chorizo. Incluye lechuga, tomate, maíz, queso, tocineta, pepinillo, salsas y papas fritas naturales.",
     price: 43,
     image: "/10pepitos.png",
   },
@@ -382,7 +572,7 @@ export const products = [
     name: "Shawarma de Carne",
     category: "Shawarma",
     description:
-      "Shawarma con 200 g de proteína a elección: carne, churrasco de pollo, chorizo o cerdo al barril, todo al carbón. Con lechuga, tomate, queso, maíz, pepinillo, salsas y papas fritas naturales.",
+      "Shawarma normal con 150 g de carne al carbón, lechuga, tomate, queso, maíz, pepinillo, salsas y papas fritas naturales acompañando el shawarma.",
     price: 7,
     image: "/shawarmanormal.png",
   },
@@ -391,7 +581,7 @@ export const products = [
     name: "Shawarma de Pollo",
     category: "Shawarma",
     description:
-      "Shawarma con 200 g de proteína a elección: carne, churrasco de pollo, chorizo o cerdo al barril, todo al carbón. Con lechuga, tomate, queso, maíz, pepinillo, salsas y papas fritas naturales.",
+      "Shawarma normal con 150 g de churrasco de pollo al carbón, lechuga, tomate, queso, maíz, pepinillo, salsas y papas fritas naturales acompañando el shawarma.",
     price: 7,
     image: "/shawarmanormal.png",
   },
@@ -400,46 +590,9 @@ export const products = [
     name: "Shawarma Mixto",
     category: "Shawarma",
     description:
-      "Shawarma mixto con proteínas al carbón, lechuga, tomate, queso, maíz, pepinillo, salsas y papas fritas naturales.",
+      "Shawarma especial mixto con 200 g de proteínas al carbón a elección: carne, churrasco de pollo, chorizo o cerdo al barril. Incluye lechuga, tomate, queso, maíz, pepinillo, salsas y papas fritas naturales acompañando el shawarma.",
     price: 8,
     image: "/shawarmamixto.png",
-  },
-
-  // =========================
-  // PARRILLAS
-  // =========================
-  {
-    id: 47,
-    name: "Parrilla Normal",
-    category: "Parrillas",
-    description: "Parrilla con 1 proteína, ensalada, papas fritas y yuca.",
-    price: 8,
-    image: "/imagenparrilas.png",
-  },
-  {
-    id: 48,
-    name: "Parrilla Mediana",
-    category: "Parrillas",
-    description: "Parrilla con 2 proteínas, ensalada, papas fritas y yuca.",
-    price: 9,
-    image: "/imagenparrilas.png",
-  },
-  {
-    id: 49,
-    name: "Parrilla Grande",
-    category: "Parrillas",
-    description: "Parrilla con 3 proteínas, ensalada, papas fritas y yuca.",
-    price: 10,
-    image: "/imagenparrilas.png",
-  },
-  {
-    id: 50,
-    name: "Parrilla Full",
-    category: "Parrillas",
-    description:
-      "Parrilla full con 4 proteínas, ensalada, papas fritas y yuca.",
-    price: 15,
-    image: "/parrillafull.png",
   },
 
   // =========================
@@ -449,7 +602,7 @@ export const products = [
     id: 51,
     name: "Papas Fritas",
     category: "Delicias",
-    description: "Papas fritas con queso amarillo y salsas.",
+    description: "Papas fritas naturales, crujientes y doradas.",
     price: 4,
     image: "/papasfritas.png",
   },
@@ -457,7 +610,7 @@ export const products = [
     id: 52,
     name: "Tequeños",
     category: "Delicias",
-    description: "Ración de tequeños.",
+    description: "Ración de tequeños dorados, rellenos de queso.",
     price: 4,
     image: "/tequeño.png",
   },
@@ -465,7 +618,7 @@ export const products = [
     id: 53,
     name: "Nuggets",
     category: "Delicias",
-    description: "Ración de nuggets.",
+    description: "Ración de nuggets crujientes.",
     price: 7,
     image: "/nugets.png",
   },
@@ -474,7 +627,7 @@ export const products = [
     name: "Salchipapa",
     category: "Delicias",
     description:
-      "Papas, salchichas, proteína a la parrilla, queso amarillo y maíz.",
+      "Salchipapa con papas fritas naturales, salchichas, proteína a la parrilla, queso amarillo, maíz y salsas.",
     price: 8,
     image: "/salchipapa.png",
   },
@@ -482,7 +635,8 @@ export const products = [
     id: 55,
     name: "Club House",
     category: "Delicias",
-    description: "Club House estilo Bambucha.",
+    description:
+      "Club House estilo Bambucha con pan, proteína, vegetales, queso, jamón, salsas y papas fritas naturales.",
     price: 7,
     image: "/clubhpouse.png",
   },
