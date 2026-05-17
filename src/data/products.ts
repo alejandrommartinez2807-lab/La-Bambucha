@@ -398,7 +398,7 @@ export const products = [
     name: "Burger Revienta Dieta",
     category: "Hamburguesas",
     description:
-      "/Burger extrema con carne de res, milanesa de pollo, chorizo y chuleta de 150 g cada una, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft, huevo y papas fritas naturales.",
+      "Burger extrema con carne de res, milanesa de pollo, chorizo y chuleta de 150 g cada una, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft, huevo y papas fritas naturales.",
     price: 10,
     image: "/triplepollo.png",
   },
