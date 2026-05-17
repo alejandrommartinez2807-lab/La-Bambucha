@@ -27,7 +27,7 @@ export const products = [
     name: "Combo #2",
     category: "Combos",
     description:
-      "4 hamburguesas de carne o pollo + papas fritas + refresco de 1.25 litros.",
+      "4 hamburguesas especiales de carne o pollo + papas fritas + refresco de 1.25 litros.",
     price: 20,
     image: "/burger-normal.jpeg",
   },
