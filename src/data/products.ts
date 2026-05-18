@@ -600,7 +600,7 @@ export const products = [
     name: "Shawarma Normal",
     category: "Shawarma",
     description:
-      "Shawarma normal de 150 g de proteina con 1 proteina a su elecion entre carne, churrasco de pollo, chorizo y cerdo al barril, lechuga, tomate, queso, maíz, pepinillo, salsas y papas fritas naturales acompañando el shawarma.",
+      "Shawarma normal de 150 g de proteina con carne, churrasco de pollo, chorizo y cerdo al barril, lechuga, tomate, queso, maíz, pepinillo, salsas y papas fritas naturales acompañando el shawarma.",
     price: 7,
     image: "/shawarmanormal.png",
   },
