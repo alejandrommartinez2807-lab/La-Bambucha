@@ -65,7 +65,7 @@ function buildWhatsAppMessage(
       ...lines,
       "",
       `Total: $${formatMoney(totalPrice)}`,
-      totalBs ? `Aprox. Bs. ${formatMoney(totalBs)}` : "",
+      totalBs ? `Total Bs. ${formatMoney(totalBs)}` : "",
     ]
       .filter(Boolean)
       .join("\n"),
@@ -289,7 +289,7 @@ export default function CartDrawer({
 
                 {exchangeRate && (
                   <p className="mt-1 text-sm font-bold text-yellow-50/75">
-                    Aprox. Bs. {formatMoney(totalBs)}
+                    Total Bs. {formatMoney(totalBs)}
                   </p>
                 )}
               </div>

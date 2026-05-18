@@ -63,7 +63,7 @@ export const products = [
     name: "Combo #6",
     category: "Combos",
     description:
-      "2 hamburguesas mixtas con carne, pollo o chorizo, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas y queso facilista Kraft + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
+      "2 hamburguesas mixtas con 2 proteínas entre carne, milanesa de pollo, chorizo, cerdo al barril y chuleta, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas y queso facilista Kraft + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 18,
     image: "/mixta.png",
   },
@@ -148,7 +148,7 @@ export const products = [
     name: "Combo Parrillero",
     category: "Combos",
     description:
-      "2 parrillas normales de 1 proteína con carne, churrasco de pollo, cerdo al barril o chorizo a elección, acompañadas con ensalada, papas fritas naturales y yuca + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
+      "2 parrillas normales de 1 proteína con carne, churrasco de pollo, cerdo al barril o chorizo a elección, acompañadas con ensalada, papas fritas naturales y contorno a elección entre bollo o yuca aliñada + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 16,
     image: "/imagenparrilas.png",
   },
@@ -157,7 +157,7 @@ export const products = [
     name: "Combo Parrillero Súper",
     category: "Combos",
     description:
-      "2 parrillas medianas de 2 proteínas con carne, churrasco de pollo, cerdo al barril o chorizo a elección, acompañadas con ensalada, papas fritas naturales y yuca + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
+      "2 parrillas medianas de 2 proteínas con carne, churrasco de pollo, cerdo al barril o chorizo a elección, acompañadas con ensalada, papas fritas naturales y contorno a elección entre bollo o yuca aliñada + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 18,
     image: "/imagenparrilas.png",
   },
@@ -166,7 +166,7 @@ export const products = [
     name: "Combo Parrillero Especial",
     category: "Combos",
     description:
-      "2 parrillas grandes de 3 proteínas con carne, churrasco de pollo, cerdo al barril o chorizo a elección, acompañadas con ensalada, papas fritas naturales y yuca + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
+      "2 parrillas grandes de 3 proteínas con carne, churrasco de pollo, cerdo al barril o chorizo a elección, acompañadas con ensalada, papas fritas naturales y contorno a elección entre bollo o yuca aliñada + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 20,
     image: "/imagenparrilas.png",
   },
@@ -202,7 +202,7 @@ export const products = [
     name: "Combo Grill Burger",
     category: "Combos",
     description:
-      "2 burgers triples con triple proteína, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas y queso facilista Kraft + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
+      "2 burgers triples con proteínas entre carne, milanesa de pollo, chorizo, cerdo al barril y chuleta, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y huevo + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 20,
     image: "/triplecarne.png",
   },
@@ -247,7 +247,7 @@ export const products = [
     name: "Combo Resuelve Parrillero",
     category: "Combos",
     description:
-      "3 parrillas festival con proteína a elección, ensalada, yuca y acompañantes de la casa + 1 refresco de 1 litro.",
+      "3 parrillas festival con proteína a elección, ensalada, papas fritas naturales y contorno a elección entre bollo o yuca aliñada + 1 refresco de 1 litro.",
     price: 15,
     image: "/imagenparrilas.png",
   },
@@ -256,7 +256,7 @@ export const products = [
     name: "Combo Parrilla Familiar",
     category: "Combos",
     description:
-      "1 parrilla familiar con carne, pollo, chorizo y cerdo, acompañada con ensalada, papas fritas naturales, yuca y salsas + 1 refresco de 1 litro.",
+      "1 parrilla familiar con carne, pollo, chorizo y cerdo, acompañada con ensalada, papas fritas naturales, salsas y contorno a elección entre bollo o yuca aliñada + 1 refresco de 1 litro.",
     price: 28,
     image: "/parrillafull.png",
   },
@@ -269,7 +269,7 @@ export const products = [
     name: "Parrilla Normal",
     category: "Parrillas",
     description:
-      "Parrilla normal con 250 g de proteína a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales y yuca.",
+      "Parrilla normal con 250 g de proteína a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales y contorno a elección entre bollo o yuca aliñada.",
     price: 8,
     image: "/imagenparrilas.png",
   },
@@ -278,7 +278,7 @@ export const products = [
     name: "Parrilla Mediana",
     category: "Parrillas",
     description:
-      "Parrilla mediana con 280 g de proteína a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales y yuca.",
+      "Parrilla mediana con 280 g de proteína a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales y contorno a elección entre bollo o yuca aliñada.",
     price: 9,
     image: "/imagenparrilas.png",
   },
@@ -287,16 +287,16 @@ export const products = [
     name: "Parrilla Grande",
     category: "Parrillas",
     description:
-      "Parrilla grande con 300 g de proteína a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales y yuca.",
+      "Parrilla grande con 300 g de proteína a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales y contorno a elección entre bollo o yuca aliñada.",
     price: 10,
     image: "/imagenparrilas.png",
   },
   {
     id: 50,
-    name: "Parrilla Full",
+    name: "Parrilla Full para 2 personas",
     category: "Parrillas",
     description:
-      "Parrilla full con 500 g de proteínas a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales y yuca. Ideal para 2 personas.",
+      "Parrilla full con 500 g de proteínas a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales y contorno a elección entre bollo o yuca aliñada. Ideal para 2 personas.",
     price: 15,
     image: "/parrillafull.png",
   },
@@ -390,28 +390,20 @@ export const products = [
     name: "Burger Mixta",
     category: "Hamburguesas",
     description:
-      "Burger mixta con 2 proteínas a gusto entre carne, milanesa de pollo y chorizo, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
+      "Burger mixta con 2 proteínas entre carne, milanesa de pollo, chorizo, cerdo al barril y chuleta, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
     price: 9,
     image: "/mixta.png",
   },
   {
     id: 25,
-    name: "Burger Triple de Carne",
+    name: "Burger Triple Proteína",
     category: "Hamburguesas",
     description:
-      "Triple carne de res al carbón, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
+      "Triple proteína entre carne, milanesa de pollo, chorizo, cerdo al barril y chuleta, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft, huevo y papas fritas naturales.",
     price: 10,
     image: "/triplecarne.png",
   },
-  {
-    id: 26,
-    name: "Burger Triple de Pollo",
-    category: "Hamburguesas",
-    description:
-      "Triple milanesa de pollo al carbón, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
-    price: 10,
-    image: "/triplepollo.png",
-  },
+  
   {
     id: 80,
     name: "Burger Revienta Dieta",
@@ -489,7 +481,7 @@ export const products = [
     image: "/perros especiales.png",
   },
 
-  // =========================
+    // =========================
   // PEPITOS
   // =========================
   {
@@ -565,6 +557,24 @@ export const products = [
     image: "/7pepitos.png",
   },
   {
+    id: 81,
+    name: "Pepito de 1.5 Metros",
+    category: "Pepitos",
+    description:
+      "Pepito gigante de 1.5 metros con proteína a elección: carne, cerdo al barril, churrasco de pollo o chorizo. Incluye lechuga, tomate, maíz, queso, tocineta, pepinillo, salsas y papas fritas naturales.",
+    price: 37,
+    image: "/7pepitos.png",
+  },
+  {
+    id: 82,
+    name: "Pepito de 1.5 Metros Mixto",
+    category: "Pepitos",
+    description:
+      "Pepito gigante de 1.5 metros mixto con proteínas a elección: carne, cerdo al barril, churrasco de pollo o chorizo. Incluye lechuga, tomate, maíz, queso, tocineta, pepinillo, salsas y papas fritas naturales.",
+    price: 43,
+    image: "/7pepitos.png",
+  },
+  {
     id: 42,
     name: "Pepito de 2 Metros",
     category: "Pepitos",
@@ -588,28 +598,19 @@ export const products = [
   // =========================
   {
     id: 44,
-    name: "Shawarma de Carne",
+    name: "Shawarma Normal",
     category: "Shawarma",
     description:
-      "Shawarma normal con 150 g de carne al carbón, lechuga, tomate, queso, maíz, pepinillo, salsas y papas fritas naturales acompañando el shawarma.",
-    price: 7,
-    image: "/shawarmanormal.png",
-  },
-  {
-    id: 45,
-    name: "Shawarma de Pollo",
-    category: "Shawarma",
-    description:
-      "Shawarma normal con 150 g de churrasco de pollo al carbón, lechuga, tomate, queso, maíz, pepinillo, salsas y papas fritas naturales acompañando el shawarma.",
+      "Shawarma normal de 150 g de proteina con 1 proteina a su elecion entre carne y churrasco de pollo, lechuga, tomate, queso, maíz, pepinillo, salsas y papas fritas naturales acompañando el shawarma.",
     price: 7,
     image: "/shawarmanormal.png",
   },
   {
     id: 46,
-    name: "Shawarma Mixto",
+    name: "Shawarma Especial",
     category: "Shawarma",
     description:
-      "Shawarma especial mixto con 200 g de proteínas al carbón a elección: carne, churrasco de pollo, chorizo o cerdo al barril. Incluye lechuga, tomate, queso, maíz, pepinillo, salsas y papas fritas naturales acompañando el shawarma.",
+      "Shawarma especial mixto con 200 g de proteínas al carbón a su elección: carne, churrasco de pollo, chorizo o cerdo al barril. Incluye lechuga, tomate, queso, maíz, pepinillo, salsas y papas fritas naturales acompañando el shawarma.",
     price: 8,
     image: "/shawarmamixto.png",
   },
@@ -637,9 +638,9 @@ export const products = [
     id: 53,
     name: "Nuggets",
     category: "Delicias",
-    description: "Ración de nuggets crujientes.",
+    description: "Ración de nuggets crujientes junto a una racion de papas fritas.",
     price: 7,
-    image: "/nugets.png",
+    image: "/nuggetspollo.png",
   },
   {
     id: 54,
@@ -676,7 +677,7 @@ export const products = [
     name: "Refresco 1 Litro",
     category: "Bebidas",
     description: "Refresco de 1 litro.",
-    price: 2,
+    price: 2.5,
     image: "/refresco1litros.png",
   },
   {
@@ -684,7 +685,7 @@ export const products = [
     name: "Refresco 1.5 Litros",
     category: "Bebidas",
     description: "Refresco de 1.5 litros.",
-    price: 2.5,
+    price: 3,
     image: "/refresco1.5litros.png",
   },
   {
@@ -710,14 +711,6 @@ export const products = [
     description: "Té frío Lipton.",
     price: 2.5,
     image: "/telipton.png",
-  },
-  {
-    id: 62,
-    name: "Refresco 2 Litros",
-    category: "Bebidas",
-    description: "Refresco de 2 litros frío.",
-    price: 3,
-    image: "/refresco2litros.png",
   },
   {
     id: 63,
@@ -749,7 +742,7 @@ export const products = [
     category: "Bebidas",
     description:
       "Agua gasificada Nevada de 1.5 litros, ideal para acompañar tu pedido.",
-    price: 3,
+    price: 2.5,
     image: "/aguagasificada1.5litros.png",
   },
 ]
