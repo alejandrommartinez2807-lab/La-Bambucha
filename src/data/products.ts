@@ -561,7 +561,7 @@ export const products = [
     category: "Pepitos",
     description:
       "Pepito gigante de 1.5 metros con proteína a elección: carne, cerdo al barril, churrasco de pollo o chorizo. Incluye lechuga, tomate, maíz, queso, tocineta, pepinillo, salsas y papas fritas naturales.",
-    price: 37,
+    price: 27,
     image: "/7pepitos.png",
   },
   {
@@ -570,7 +570,7 @@ export const products = [
     category: "Pepitos",
     description:
       "Pepito gigante de 1.5 metros mixto con proteínas a elección: carne, cerdo al barril, churrasco de pollo o chorizo. Incluye lechuga, tomate, maíz, queso, tocineta, pepinillo, salsas y papas fritas naturales.",
-    price: 43,
+    price: 33,
     image: "/7pepitos.png",
   },
   {
@@ -600,7 +600,7 @@ export const products = [
     name: "Shawarma Normal",
     category: "Shawarma",
     description:
-      "Shawarma normal de 150 g de proteina con 1 proteina a su elecion entre carne y churrasco de pollo, lechuga, tomate, queso, maíz, pepinillo, salsas y papas fritas naturales acompañando el shawarma.",
+      "Shawarma normal de 150 g de proteina con 1 proteina a su elecion entre carne, churrasco de pollo, chorizo y cerdo al barril, lechuga, tomate, queso, maíz, pepinillo, salsas y papas fritas naturales acompañando el shawarma.",
     price: 7,
     image: "/shawarmanormal.png",
   },
@@ -718,14 +718,6 @@ export const products = [
     description: "Cerveza fría.",
     price: 1,
     image: "/cervesa.png",
-  },
-  {
-    id: 64,
-    name: "Caroreña de Lata",
-    category: "Bebidas",
-    description: "Caroreña de lata fría.",
-    price: 2,
-    image: "/caroreña.png",
   },
   {
     id: 65,
