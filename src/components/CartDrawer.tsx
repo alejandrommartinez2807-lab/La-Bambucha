@@ -87,7 +87,7 @@ export default function CartDrawer({
   const hasItems = items.length > 0
   const totalBs = exchangeRate ? totalPrice * exchangeRate : 0
 
-  const whatsappHref = `https://wa.me/584244721722?text=${buildWhatsAppMessage(
+  const whatsappHref = `https://wa.me/584121317635?text=${buildWhatsAppMessage(
     items,
     totalPrice,
     exchangeRate,

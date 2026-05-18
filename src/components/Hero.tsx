@@ -6,7 +6,7 @@ import {
   UtensilsCrossed,
 } from "lucide-react"
 
-const WHATSAPP_URL = "https://wa.me/584244721722"
+const WHATSAPP_URL = "https://wa.me/584121317635"
 const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/r4QXeRTgXuRJTqvU8"
 
 export default function Hero() {
