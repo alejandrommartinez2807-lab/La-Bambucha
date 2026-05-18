@@ -36,7 +36,7 @@ export const products = [
     name: "Combo #3",
     category: "Combos",
     description:
-      "4 pepitos con proteína a elección, lechuga, tomate, maíz, queso, tocineta, pepinillo y salsas + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
+      "4 pepitos con proteína a su elección entre carne, churrasco de pollo, chorizo y cerdo al barril, lechuga, tomate, maíz, queso, tocineta, pepinillo y salsas + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 20,
     image: "/5pepitos.png",
   },
@@ -45,7 +45,7 @@ export const products = [
     name: "Combo #4",
     category: "Combos",
     description:
-      "3 shawarmas con proteína al carbón, lechuga, tomate, queso, maíz, pepinillo y salsas + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
+      "3 shawarmas con proteína a su elección entre carne, churrasco de pollo, chorizo y cerdo al barril, lechuga, tomate, queso, maíz, pepinillo y salsas + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 19,
     image: "/shawarmamixto.png",
   },
