@@ -148,7 +148,7 @@ export const products = [
     name: "Combo Parrillero",
     category: "Combos",
     description:
-      "2 parrillas normales de 1 proteína con carne, churrasco de pollo, cerdo al barril o chorizo a elección, acompañadas con ensalada, papas fritas naturales y contorno a elección entre bollo o yuca aliñada + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
+      "2 parrillas normales de 1 proteína con carne, churrasco de pollo, cerdo al barril o chorizo a elección, acompañadas con ensalada, papas fritas naturales, yuca aliñada y bollo aliñado + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 16,
     image: "/imagenparrilas.png",
   },
@@ -157,7 +157,7 @@ export const products = [
     name: "Combo Parrillero Súper",
     category: "Combos",
     description:
-      "2 parrillas medianas de 2 proteínas con carne, churrasco de pollo, cerdo al barril o chorizo a elección, acompañadas con ensalada, papas fritas naturales y contorno a elección entre bollo o yuca aliñada + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
+      "2 parrillas medianas de 2 proteínas con carne, churrasco de pollo, cerdo al barril o chorizo a elección, acompañadas con ensalada, papas fritas naturales, yuca aliñada y bollo aliñado + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 18,
     image: "/imagenparrilas.png",
   },
@@ -166,7 +166,7 @@ export const products = [
     name: "Combo Parrillero Especial",
     category: "Combos",
     description:
-      "2 parrillas grandes de 3 proteínas con carne, churrasco de pollo, cerdo al barril o chorizo a elección, acompañadas con ensalada, papas fritas naturales y contorno a elección entre bollo o yuca aliñada + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
+      "2 parrillas grandes de 3 proteínas con carne, churrasco de pollo, cerdo al barril o chorizo a elección, acompañadas con ensalada, papas fritas naturales, yuca aliñada y bollo aliñado + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 20,
     image: "/imagenparrilas.png",
   },
@@ -247,7 +247,7 @@ export const products = [
     name: "Combo Resuelve Parrillero",
     category: "Combos",
     description:
-      "3 parrillas festival con proteína a elección, ensalada, papas fritas naturales y contorno a elección entre bollo o yuca aliñada + 1 refresco de 1 litro.",
+      "3 parrillas festival con proteína a elección, ensalada, papas fritas naturales, yuca aliñada y bollo aliñado + 1 refresco de 1 litro.",
     price: 15,
     image: "/imagenparrilas.png",
   },
@@ -256,7 +256,7 @@ export const products = [
     name: "Combo Parrilla Familiar",
     category: "Combos",
     description:
-      "1 parrilla familiar con carne, pollo, chorizo y cerdo, acompañada con ensalada, papas fritas naturales, salsas y contorno a elección entre bollo o yuca aliñada + 1 refresco de 1 litro.",
+      "1 parrilla familiar con carne, pollo, chorizo y cerdo, acompañada con ensalada, papas fritas naturales, salsas, yuca aliñada y bollo aliñado + 1 refresco de 1 litro.",
     price: 28,
     image: "/parrillafull.png",
   },
@@ -269,7 +269,7 @@ export const products = [
     name: "Parrilla Normal",
     category: "Parrillas",
     description:
-      "Parrilla normal con 250 g de proteína a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales y contorno a elección entre bollo o yuca aliñada.",
+      "Parrilla normal con 250 g de proteína a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales, yuca aliñada y bollo aliñado.",
     price: 8,
     image: "/imagenparrilas.png",
   },
@@ -278,7 +278,7 @@ export const products = [
     name: "Parrilla Mediana",
     category: "Parrillas",
     description:
-      "Parrilla mediana con 280 g de proteína a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales y contorno a elección entre bollo o yuca aliñada.",
+      "Parrilla mediana con 280 g de proteína a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales, yuca aliñada y bollo aliñado.",
     price: 9,
     image: "/imagenparrilas.png",
   },
@@ -287,7 +287,7 @@ export const products = [
     name: "Parrilla Grande",
     category: "Parrillas",
     description:
-      "Parrilla grande con 300 g de proteína a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales y contorno a elección entre bollo o yuca aliñada.",
+      "Parrilla grande con 300 g de proteína a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales, yuca aliñada y bollo aliñado.",
     price: 10,
     image: "/imagenparrilas.png",
   },
@@ -296,7 +296,7 @@ export const products = [
     name: "Parrilla Full para 2 personas",
     category: "Parrillas",
     description:
-      "Parrilla full con 500 g de proteínas a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales y contorno a elección entre bollo o yuca aliñada. Ideal para 2 personas.",
+      "Parrilla full con 500 g de proteínas a elección: carne, churrasco de pollo, cerdo al barril o chorizo. Acompañada con ensalada, papas fritas naturales, yuca aliñada y bollo aliñado. Ideal para 2 personas.",
     price: 15,
     image: "/parrillafull.png",
   },
@@ -403,7 +403,6 @@ export const products = [
     price: 10,
     image: "/triplecarne.png",
   },
-  
   {
     id: 80,
     name: "Burger Revienta Dieta",
@@ -481,7 +480,7 @@ export const products = [
     image: "/perros especiales.png",
   },
 
-    // =========================
+  // =========================
   // PEPITOS
   // =========================
   {
