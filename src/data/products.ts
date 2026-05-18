@@ -18,7 +18,7 @@ export const products = [
     name: "Combo #1",
     category: "Combos",
     description:
-      "5 perros especiales con maíz y tocineta + refresco de 1.25 litros.",
+      "5 perros especiales con salchicha Delipic, cebolla, ensalada, papitas pequeñas, queso, maíz, tocineta y salsas + 1 refresco de 1 litro.",
     price: 10,
     image: "/perros especiales.png",
   },
@@ -27,7 +27,7 @@ export const products = [
     name: "Combo #2",
     category: "Combos",
     description:
-      "4 hamburguesas especiales de carne o pollo + papas fritas naturales + refresco de 1.25 litros.",
+      "4 hamburguesas especiales de carne o pollo con pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas y queso facilista Kraft + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 20,
     image: "/burger-normal.jpeg",
   },
@@ -35,7 +35,8 @@ export const products = [
     id: 3,
     name: "Combo #3",
     category: "Combos",
-    description: "4 pepitos + papas fritas naturales + refresco de 1.25 litros.",
+    description:
+      "4 pepitos con proteína a elección, lechuga, tomate, maíz, queso, tocineta, pepinillo y salsas + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 20,
     image: "/5pepitos.png",
   },
@@ -43,7 +44,8 @@ export const products = [
     id: 4,
     name: "Combo #4",
     category: "Combos",
-    description: "3 shawarmas + papas fritas naturales + refresco de 1.25 litros.",
+    description:
+      "3 shawarmas con proteína al carbón, lechuga, tomate, queso, maíz, pepinillo y salsas + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 19,
     image: "/shawarmamixto.png",
   },
@@ -52,7 +54,7 @@ export const products = [
     name: "Combo #5",
     category: "Combos",
     description:
-      "2 hamburguesas de pollo crispy + papas fritas naturales + refresco de 1.25 litros.",
+      "2 hamburguesas de pollo crispy con pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas y queso facilista Kraft + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 16,
     image: "/crispi.png",
   },
@@ -61,7 +63,7 @@ export const products = [
     name: "Combo #6",
     category: "Combos",
     description:
-      "2 hamburguesas mixtas + papas fritas naturales + refresco de 1.25 litros.",
+      "2 hamburguesas mixtas con carne, pollo o chorizo, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas y queso facilista Kraft + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 18,
     image: "/mixta.png",
   },
@@ -69,7 +71,8 @@ export const products = [
     id: 7,
     name: "Combo #7",
     category: "Combos",
-    description: "2 hamburguesas normales + 1 refresco de 1.25 litros.",
+    description:
+      "2 hamburguesas normales de carne o pollo con pan de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz y pepinillo + 1 refresco de 1 litro.",
     price: 8,
     image: "/burger-normal.jpeg",
   },
@@ -77,7 +80,8 @@ export const products = [
     id: 8,
     name: "Combo #8",
     category: "Combos",
-    description: "5 hamburguesas de carne + 1 refresco de 1.25 litros.",
+    description:
+      "5 hamburguesas normales de carne con carne de res de 100 g al carbón, pan de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz y pepinillo + 1 refresco de 1 litro.",
     price: 17,
     image: "/triplecarne.png",
   },
@@ -85,7 +89,8 @@ export const products = [
     id: 9,
     name: "Combo #9",
     category: "Combos",
-    description: "4 hamburguesas de pollo + 1 refresco de 1.25 litros.",
+    description:
+      "4 hamburguesas normales de pollo con milanesa de pollo de 100 g al carbón, pan de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz y pepinillo + 1 refresco de 1 litro.",
     price: 15,
     image: "/pollo.png",
   },
@@ -93,7 +98,8 @@ export const products = [
     id: 10,
     name: "Combo #10",
     category: "Combos",
-    description: "2 salchipapas + 1 refresco de 1.25 litros.",
+    description:
+      "2 salchipapas con papas fritas naturales, salchichas, proteína a la parrilla, queso amarillo, maíz y salsas + 1 refresco de 1 litro.",
     price: 16,
     image: "/salchipapa.png",
   },
@@ -101,7 +107,8 @@ export const products = [
     id: 11,
     name: "Combo Resuelve",
     category: "Combos",
-    description: "5 perros normales + refresco de 1.25 litros.",
+    description:
+      "5 perros normales con salchicha Delipic, cebolla, ensalada, papitas pequeñas, queso y salsas + 1 refresco de 1 litro.",
     price: 8,
     image: "/perrosnormales.png",
   },
@@ -109,7 +116,8 @@ export const products = [
     id: 12,
     name: "Combo Activo",
     category: "Combos",
-    description: "3 perros grandes clásicos + 1 refresco de 1.25 litros.",
+    description:
+      "3 perros grandes clásicos con salchicha Delipic, cebolla, ensalada, papitas pequeñas, queso y salsas + 1 refresco de 1 litro.",
     price: 8,
     image: "/perrosnormales.png",
   },
@@ -117,7 +125,8 @@ export const products = [
     id: 13,
     name: "Combo Grupete",
     category: "Combos",
-    description: "5 perros grandes clásicos + 1 refresco de 1.25 litros.",
+    description:
+      "5 perros grandes clásicos con salchicha Delipic, cebolla, ensalada, papitas pequeñas, queso y salsas + 1 refresco de 1 litro.",
     price: 13,
     image: "/perrosnormales.png",
   },
@@ -125,7 +134,8 @@ export const products = [
     id: 14,
     name: "Combo Panas",
     category: "Combos",
-    description: "6 perros grandes clásicos.",
+    description:
+      "6 perros grandes clásicos con salchicha Delipic, cebolla, ensalada, papitas pequeñas, queso y salsas.",
     price: 13,
     image: "/perrosnormales.png",
   },
@@ -138,7 +148,7 @@ export const products = [
     name: "Combo Parrillero",
     category: "Combos",
     description:
-      "2 parrillas normales de 1 proteína + 1 ración de papas fritas + 1 refresco.",
+      "2 parrillas normales de 1 proteína con carne, churrasco de pollo, cerdo al barril o chorizo a elección, acompañadas con ensalada, papas fritas naturales y yuca + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 16,
     image: "/imagenparrilas.png",
   },
@@ -147,7 +157,7 @@ export const products = [
     name: "Combo Parrillero Súper",
     category: "Combos",
     description:
-      "2 parrillas medianas de 2 proteínas + 1 ración de papas fritas + 1 refresco.",
+      "2 parrillas medianas de 2 proteínas con carne, churrasco de pollo, cerdo al barril o chorizo a elección, acompañadas con ensalada, papas fritas naturales y yuca + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 18,
     image: "/imagenparrilas.png",
   },
@@ -156,7 +166,7 @@ export const products = [
     name: "Combo Parrillero Especial",
     category: "Combos",
     description:
-      "2 parrillas grandes de 3 proteínas + 1 ración de papas fritas + 1 refresco.",
+      "2 parrillas grandes de 3 proteínas con carne, churrasco de pollo, cerdo al barril o chorizo a elección, acompañadas con ensalada, papas fritas naturales y yuca + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 20,
     image: "/imagenparrilas.png",
   },
@@ -165,7 +175,7 @@ export const products = [
     name: "Combo Full Pepito 1 Metro",
     category: "Combos",
     description:
-      "1 pepito de 1 metro + 1 ración de papas fritas + 1 refresco.",
+      "1 pepito de 1 metro con proteína a elección: carne, cerdo al barril, churrasco de pollo o chorizo. Incluye lechuga, tomate, maíz, queso, tocineta, pepinillo y salsas + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 30,
     image: "/5pepitos.png",
   },
@@ -174,7 +184,7 @@ export const products = [
     name: "Combo Full Pepito Metro y Medio",
     category: "Combos",
     description:
-      "1 pepito de 1.5 metros + 1 ración de papas fritas + 1 refresco.",
+      "1 pepito de 1.5 metros con proteína a elección: carne, cerdo al barril, churrasco de pollo o chorizo. Incluye lechuga, tomate, maíz, queso, tocineta, pepinillo y salsas + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 35,
     image: "/7pepitos.png",
   },
@@ -183,7 +193,7 @@ export const products = [
     name: "Combo Full Pepito 2 Metros",
     category: "Combos",
     description:
-      "1 pepito de 2 metros + 1 ración de papas fritas + 1 refresco.",
+      "1 pepito de 2 metros con proteína a elección: carne, cerdo al barril, churrasco de pollo o chorizo. Incluye lechuga, tomate, maíz, queso, tocineta, pepinillo y salsas + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 45,
     image: "/10pepitos.png",
   },
@@ -192,7 +202,7 @@ export const products = [
     name: "Combo Grill Burger",
     category: "Combos",
     description:
-      "2 burgers triples + 1 ración de papas fritas + 1 refresco.",
+      "2 burgers triples con triple proteína, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas y queso facilista Kraft + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 20,
     image: "/triplecarne.png",
   },
@@ -201,7 +211,7 @@ export const products = [
     name: "Combo Full Burger",
     category: "Combos",
     description:
-      "3 burgers especiales + 1 ración de papas fritas + 1 refresco.",
+      "3 burgers especiales con proteína de 150 g, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas y queso facilista Kraft + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 23,
     image: "/burger-normal.jpeg",
   },
@@ -210,7 +220,7 @@ export const products = [
     name: "Combo Perrero",
     category: "Combos",
     description:
-      "4 perry carne + 1 ración de papas fritas + 1 refresco.",
+      "4 perry carne con pan de perro, proteína de carne, cebolla, ensalada, papitas pequeñas, queso, maíz, tocineta y salsas + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 18,
     image: "/perros especiales.png",
   },
@@ -219,7 +229,7 @@ export const products = [
     name: "Combo Granjero",
     category: "Combos",
     description:
-      "4 granjeros + 1 ración de papas fritas + 1 refresco.",
+      "4 granjeros con pan de perro, proteína de pollo, cebolla, ensalada, papitas pequeñas, queso, maíz, tocineta y salsas + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 21,
     image: "/perros especiales.png",
   },
@@ -228,7 +238,7 @@ export const products = [
     name: "Combo Shawarma",
     category: "Combos",
     description:
-      "3 shawarmas especiales + 1 ración de papas fritas + 1 refresco.",
+      "3 shawarmas especiales con proteínas al carbón, lechuga, tomate, queso, maíz, pepinillo y salsas + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 22,
     image: "/shawarmamixto.png",
   },
@@ -237,7 +247,7 @@ export const products = [
     name: "Combo Resuelve Parrillero",
     category: "Combos",
     description:
-      "3 parrillas festival + 1 refresco. Parrillas tipo festival sin papas.",
+      "3 parrillas festival con proteína a elección, ensalada, yuca y acompañantes de la casa + 1 refresco de 1 litro.",
     price: 15,
     image: "/imagenparrilas.png",
   },
@@ -246,7 +256,7 @@ export const products = [
     name: "Combo Parrilla Familiar",
     category: "Combos",
     description:
-      "1 parrilla familiar con carne, pollo, chorizo y cerdo + 1 refresco de 1.25 litros.",
+      "1 parrilla familiar con carne, pollo, chorizo y cerdo, acompañada con ensalada, papas fritas naturales, yuca y salsas + 1 refresco de 1 litro.",
     price: 28,
     image: "/parrillafull.png",
   },
@@ -380,27 +390,36 @@ export const products = [
     name: "Burger Mixta",
     category: "Hamburguesas",
     description:
-      "Burger mixta con 2 proteínas a gusto entre carne, milanesa de pollo, chorizo y chuleta, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
+      "Burger mixta con 2 proteínas a gusto entre carne, milanesa de pollo y chorizo, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
     price: 9,
     image: "/mixta.png",
   },
   {
     id: 25,
-    name: "Burger Triple Con Tres Proteinas",
+    name: "Burger Triple de Carne",
     category: "Hamburguesas",
     description:
-      "Tres proteinas al carbón a su gusto carne,pollo, chorizo y cochino, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
+      "Triple carne de res al carbón, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
     price: 10,
     image: "/triplecarne.png",
   },
   {
     id: 26,
+    name: "Burger Triple de Pollo",
+    category: "Hamburguesas",
+    description:
+      "Triple milanesa de pollo al carbón, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft y papas fritas naturales.",
+    price: 10,
+    image: "/triplepollo.png",
+  },
+  {
+    id: 80,
     name: "Burger Revienta Dieta",
     category: "Hamburguesas",
     description:
       "Burger extrema con carne de res, milanesa de pollo, chorizo y chuleta de 150 g cada una, pan grande de mantequilla, lechuga, tomate, papitas, jamón, queso, maíz, pepinillo, tocineta, salsas, queso facilista Kraft, huevo y papas fritas naturales.",
-    price: 10,
-    image: "/triplepollo.png",
+    price: 12,
+    image: "/mixta.png",
   },
 
   // =========================
@@ -411,7 +430,7 @@ export const products = [
     name: "Perro Sencillo Pequeño",
     category: "Perritos",
     description:
-      "Perro pequeño con salchicha Delipic, cebolla, ensalada, papitas pequeñas y queso.",
+      "Perro pequeño con salchicha Delipic, pan suave, cebolla, ensalada, papitas pequeñas, queso rallado y salsas.",
     price: 2,
     image: "/perrosnormales.png",
   },
@@ -420,7 +439,7 @@ export const products = [
     name: "Perro Especial Pequeño",
     category: "Perritos",
     description:
-      "Perro pequeño especial con salchicha Delipic, cebolla, ensalada, papitas pequeñas, queso, maíz y tocineta.",
+      "Perro pequeño especial con salchicha Delipic, pan suave, cebolla, ensalada, papitas pequeñas, queso rallado, maíz, tocineta y salsas.",
     price: 2.5,
     image: "/perros especiales.png",
   },
@@ -429,7 +448,7 @@ export const products = [
     name: "Perro Sencillo Grande",
     category: "Perritos",
     description:
-      "Perro grande con salchicha Delipic, cebolla, ensalada, papitas pequeñas y queso.",
+      "Perro grande con salchicha Delipic, pan suave, cebolla, ensalada, papitas pequeñas, queso rallado y salsas.",
     price: 2.5,
     image: "/perrosnormales.png",
   },
@@ -438,7 +457,7 @@ export const products = [
     name: "Perro Especial Grande",
     category: "Perritos",
     description:
-      "Perro grande especial con salchicha Delipic, cebolla, ensalada, papitas pequeñas, queso, maíz, tocineta y papas fritas naturales.",
+      "Perro grande especial con salchicha Delipic, pan suave, cebolla, ensalada, papitas pequeñas, queso rallado, maíz, tocineta, salsas y papas fritas naturales.",
     price: 3.5,
     image: "/perros especiales.png",
   },
@@ -447,7 +466,7 @@ export const products = [
     name: "Polaco",
     category: "Perritos",
     description:
-      "Perro polaco con salchicha original Kaiser, cebolla, ensalada, papitas pequeñas, queso, maíz, tocineta y papas fritas naturales.",
+      "Perro polaco con salchicha original Kaiser, pan suave, cebolla, ensalada, papitas pequeñas, queso rallado, maíz, tocineta, salsas y papas fritas naturales.",
     price: 4.5,
     image: "/perros especiales.png",
   },
@@ -456,7 +475,7 @@ export const products = [
     name: "Chori Perro",
     category: "Perritos",
     description:
-      "Chori perro con chorizo, cebolla, ensalada, papitas pequeñas, queso, maíz, tocineta y papas fritas naturales.",
+      "Chori perro con chorizo al carbón, pan suave, cebolla, ensalada, papitas pequeñas, queso rallado, maíz, tocineta, salsas y papas fritas naturales.",
     price: 4.5,
     image: "/perros especiales.png",
   },
@@ -465,7 +484,7 @@ export const products = [
     name: "Perri Pig",
     category: "Perritos",
     description:
-      "Perri Pig especial con cebolla, ensalada, papitas pequeñas, mermelada de piña, cerdo al barril, maíz y queso parmesano.",
+      "Perri Pig especial con pan suave, cebolla, ensalada, papitas pequeñas, mermelada de piña, cerdo al barril, maíz, queso parmesano y salsas.",
     price: 4.5,
     image: "/perros especiales.png",
   },
