@@ -14,6 +14,24 @@ export const products = [
   // COMBOS ACTUALES
   // =========================
   {
+    id: 11,
+    name: "Combo Resuelve",
+    category: "Combos",
+    description:
+      "5 perros normales con salchicha Delipic, cebolla, ensalada, papitas pequeñas, queso y salsas + 1 refresco de 1 litro.",
+    price: 8,
+    image: "/perrosnormales.png",
+  },
+  {
+    id: 78,
+    name: "Combo Resuelve Parrillero",
+    category: "Combos",
+    description:
+      "3 parrillas festival con proteína a elección, ensalada, papas fritas naturales, yuca y bollo aliñado + 1 refresco de 1 litro.",
+    price: 15,
+    image: "/imagenparrilas.png",
+  },
+  {
     id: 1,
     name: "Combo #1",
     category: "Combos",
@@ -102,15 +120,6 @@ export const products = [
       "2 salchipapas con papas fritas naturales, salchichas, proteína a la parrilla, queso amarillo, maíz y salsas + 1 refresco de 1 litro.",
     price: 16,
     image: "/salchipapa.png",
-  },
-  {
-    id: 11,
-    name: "Combo Resuelve",
-    category: "Combos",
-    description:
-      "5 perros normales con salchicha Delipic, cebolla, ensalada, papitas pequeñas, queso y salsas + 1 refresco de 1 litro.",
-    price: 8,
-    image: "/perrosnormales.png",
   },
   {
     id: 12,
@@ -241,15 +250,6 @@ export const products = [
       "3 shawarmas especiales con proteínas al carbón, lechuga, tomate, queso, maíz, pepinillo y salsas + una ración de papas fritas para acompañar el combo + 1 refresco de 1 litro.",
     price: 22,
     image: "/shawarmamixto.png",
-  },
-  {
-    id: 78,
-    name: "Combo Resuelve Parrillero",
-    category: "Combos",
-    description:
-      "3 parrillas festival con proteína a elección, ensalada, papas fritas naturales, yuca y bollo aliñado + 1 refresco de 1 litro.",
-    price: 15,
-    image: "/imagenparrilas.png",
   },
   {
     id: 79,
