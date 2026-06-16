@@ -1,37 +1,48 @@
 "use client"
 
 import { ShoppingCart } from "lucide-react"
+import {
+  DEFAULT_PUBLIC_BUSINESS_CONFIG,
+  buildWhatsappUrl,
+  type PublicBusinessConfig,
+} from "@/types/publicBusinessConfig"
 
 type NavbarProps = {
   totalItems: number
   onOpenCart: () => void
+  businessConfig?: PublicBusinessConfig
 }
 
-const navItems = [
-  {
-    label: "INICIO",
-    href: "#inicio",
-    className: "text-white",
-  },
-  {
-    label: "MENÚ",
-    href: "#menu",
-    className: "text-white",
-  },
-  {
-    label: "WHATSAPP",
-    href: "#contacto",
-    className: "text-emerald-300",
-  },
-  {
-    label: "INSTAGRAM",
-    href: "https://www.instagram.com/la_bambucha_burguer/",
-    className: "text-fuchsia-300",
-    external: true,
-  },
-]
+export default function Navbar({
+  totalItems,
+  onOpenCart,
+  businessConfig = DEFAULT_PUBLIC_BUSINESS_CONFIG,
+}: NavbarProps) {
+  const navItems = [
+    {
+      label: "INICIO",
+      href: "#inicio",
+      className: "text-white",
+    },
+    {
+      label: "MENÚ",
+      href: "#menu",
+      className: "text-white",
+    },
+    {
+      label: "WHATSAPP",
+      href: buildWhatsappUrl(businessConfig.mainWhatsapp),
+      className: "text-emerald-300",
+      external: true,
+    },
+    {
+      label: "INSTAGRAM",
+      href: businessConfig.instagramUrl,
+      className: "text-fuchsia-300",
+      external: true,
+    },
+  ]
 
-export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
   return (
     <header className="sticky top-0 z-50 w-full">
       <div className="relative overflow-hidden bg-[linear-gradient(90deg,#8f3100_0%,#ad5600_40%,#c88000_72%,#d99b08_100%)] shadow-[0_10px_28px_rgba(0,0,0,0.18)]">
@@ -43,16 +54,16 @@ export default function Navbar({ totalItems, onOpenCart }: NavbarProps) {
           <a href="#inicio" className="flex min-w-0 items-center gap-3">
             <img
               src="/logo-bambucha.png"
-              alt="La Bambucha Grill Burger"
+              alt={businessConfig.businessName}
               className="h-[58px] w-[58px] shrink-0 object-contain drop-shadow-[0_0_16px_rgba(255,120,0,0.45)] sm:h-16 sm:w-16"
             />
 
             <div className="min-w-0">
               <p className="truncate text-[1.8rem] font-black uppercase leading-none tracking-tight text-white drop-shadow-[0_3px_0_rgba(0,0,0,0.22)] sm:text-3xl">
-                La Bambucha
+                {businessConfig.businessName}
               </p>
               <p className="mt-1 truncate text-[0.95rem] font-black uppercase tracking-[0.32em] text-yellow-100 sm:text-base">
-                Grill Burger
+                {businessConfig.businessShortDescription}
               </p>
             </div>
           </a>

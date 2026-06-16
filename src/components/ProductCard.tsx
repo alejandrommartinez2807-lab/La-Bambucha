@@ -1,11 +1,12 @@
 "use client"
 
-import Image from "next/image"
 import { useState } from "react"
 import { motion } from "motion/react"
 import { Plus, ShoppingCart } from "lucide-react"
 import { formatUSD, formatVES } from "@/utils/formatCurrency"
 import type { ProductToAdd } from "@/hooks/useCart"
+
+type ProductPaymentMode = "divisa" | "mixto"
 
 type ProductCardProps = {
   id: number
@@ -14,6 +15,7 @@ type ProductCardProps = {
   description: string
   price: number
   image: string
+  paymentMode?: ProductPaymentMode
   exchangeRate: number
   index?: number
   onAddToCart: (product: ProductToAdd) => void
@@ -32,6 +34,9 @@ export default function ProductCard({
 }: ProductCardProps) {
   const [added, setAdded] = useState(false)
   const [imageSrc, setImageSrc] = useState(image || "/logo-bambucha.png")
+
+  const safeExchangeRate =
+    Number.isFinite(exchangeRate) && exchangeRate > 0 ? exchangeRate : 0
 
   function handleAddToCart() {
     onAddToCart({
@@ -61,13 +66,11 @@ export default function ProductCard({
       className="group overflow-hidden rounded-[1.8rem] border border-[#5a2a00]/20 bg-[#4a1f00]/92 shadow-xl shadow-[#6b2a00]/20 transition-transform duration-300 hover:-translate-y-1"
     >
       <div className="relative h-64 overflow-hidden bg-[#120800] sm:h-72">
-        <Image
+        <img
           src={imageSrc}
           alt={name}
-          fill
           loading={index < 4 ? "eager" : "lazy"}
-          sizes="(max-width: 640px) 92vw, (max-width: 1024px) 48vw, 33vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
           onError={() => {
             setImageSrc("/logo-bambucha.png")
           }}
@@ -90,15 +93,21 @@ export default function ProductCard({
             </h3>
           </div>
 
-          <div className="min-w-[110px] rounded-[1.4rem] bg-[#f1d42f] px-4 py-3 text-right text-[#1f1100] shadow-lg shadow-yellow-950/20">
+          <div className="min-w-[118px] rounded-[1.4rem] bg-[#f1d42f] px-4 py-3 text-right text-[#1f1100] shadow-lg shadow-yellow-950/20">
             <p className="text-2xl font-black leading-none">
               {formatUSD(price)}
             </p>
 
             <div className="mt-2 border-t border-[#6b4a00]/20 pt-2">
-              <p className="text-sm font-black leading-none sm:text-base">
-                Bs {formatVES(price * exchangeRate)}
-              </p>
+              {safeExchangeRate > 0 ? (
+                <p className="text-sm font-black leading-none sm:text-base">
+                  Bs {formatVES(price * safeExchangeRate)}
+                </p>
+              ) : (
+                <p className="text-[0.62rem] font-black uppercase tracking-[0.12em] text-[#6b2500]">
+                  Actualizando tasa
+                </p>
+              )}
             </div>
           </div>
         </div>

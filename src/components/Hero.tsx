@@ -5,11 +5,19 @@ import {
   Star,
   UtensilsCrossed,
 } from "lucide-react"
+import {
+  DEFAULT_PUBLIC_BUSINESS_CONFIG,
+  buildWhatsappUrl,
+  type PublicBusinessConfig,
+} from "@/types/publicBusinessConfig"
 
-const WHATSAPP_URL = "https://wa.me/584121317635"
-const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/r4QXeRTgXuRJTqvU8"
+type HeroProps = {
+  businessConfig?: PublicBusinessConfig
+}
 
-export default function Hero() {
+export default function Hero({
+  businessConfig = DEFAULT_PUBLIC_BUSINESS_CONFIG,
+}: HeroProps) {
   return (
     <section
       id="inicio"
@@ -23,26 +31,25 @@ export default function Hero() {
         <div className="text-center md:text-left">
           <img
             src="/logo-bambucha.png"
-            alt="La Bambucha Grill Burger"
+            alt={businessConfig.businessName}
             className="mx-auto mb-8 h-72 w-72 object-contain drop-shadow-[0_0_38px_rgba(255,80,0,0.48)] sm:h-80 sm:w-80 md:hidden"
           />
 
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#7c3f00]/18 bg-[#e8bd47]/72 px-5 py-3 text-[0.68rem] font-black uppercase tracking-[0.22em] text-[#2b1600] shadow-[0_8px_22px_rgba(120,70,0,0.16)] sm:text-sm">
             <Flame size={16} />
-            La mejor manera de comer carne
+            {businessConfig.heroBadgeText || businessConfig.publicTagline}
           </div>
 
           <h1 className="mx-auto max-w-3xl text-6xl font-black uppercase leading-[0.86] tracking-[-0.08em] text-[#fff8e8] drop-shadow-[0_5px_0_rgba(91,48,0,0.35)] sm:text-7xl md:mx-0 md:text-8xl lg:text-9xl">
-            La Bambucha
+            {businessConfig.businessName}
           </h1>
 
           <p className="mt-5 text-2xl font-black uppercase tracking-[0.28em] text-[#5c1c00] sm:text-3xl">
-            Grill Burger
+            {businessConfig.heroSubtitle || businessConfig.businessShortDescription}
           </p>
 
           <p className="mx-auto mt-6 max-w-2xl text-base font-bold leading-relaxed text-[#3d2200] sm:text-lg md:mx-0 md:text-xl">
-            Hamburguesas, perritos, pepitos, shawarmas, parrillas, combos y
-            bebidas al estilo Bambucha Grill Burger.
+            {businessConfig.heroDescription}
           </p>
 
           <div className="mt-9 grid gap-3 sm:grid-cols-2 md:max-w-2xl">
@@ -55,7 +62,7 @@ export default function Hero() {
             </a>
 
             <a
-              href={WHATSAPP_URL}
+              href={buildWhatsappUrl(businessConfig.mainWhatsapp)}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[#5c1c00] px-6 py-4 text-sm font-black uppercase tracking-[0.08em] text-yellow-200 shadow-[0_0_22px_rgba(92,28,0,0.22)] transition hover:scale-105"
@@ -67,15 +74,17 @@ export default function Hero() {
 
           <div className="mt-4 grid gap-3 sm:grid-cols-2 md:max-w-2xl">
             <a
-              href="#ubicacion"
+              href={businessConfig.googleMapsUrl || "#ubicacion"}
+              target={businessConfig.googleMapsUrl ? "_blank" : undefined}
+              rel={businessConfig.googleMapsUrl ? "noreferrer" : undefined}
               className="inline-flex items-center justify-center gap-2 rounded-full border border-[#5c1c00]/25 bg-[#f0cb55]/80 px-6 py-4 text-sm font-black uppercase tracking-[0.08em] text-[#3a1600] shadow-[0_0_22px_rgba(92,28,0,0.10)] transition hover:scale-105 hover:bg-yellow-200"
             >
               <MapPin size={19} />
-              Ubicación
+              {businessConfig.locationButtonText || "Ubicación"}
             </a>
 
             <a
-              href="#reseña"
+              href="#ubicacion"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-[#5c1c00]/25 bg-[#f0cb55]/80 px-6 py-4 text-sm font-black uppercase tracking-[0.08em] text-[#3a1600] shadow-[0_0_22px_rgba(92,28,0,0.10)] transition hover:scale-105 hover:bg-yellow-200"
             >
               <Star size={19} />
@@ -90,7 +99,7 @@ export default function Hero() {
 
           <img
             src="/logo-bambucha.png"
-            alt="La Bambucha Grill Burger"
+            alt={businessConfig.businessName}
             className="relative w-full max-w-sm object-contain drop-shadow-[0_0_34px_rgba(255,90,0,0.32)]"
           />
         </div>

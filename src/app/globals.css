@@ -3,9 +3,13 @@
 :root {
   --bambucha-black: #050101;
   --bambucha-black-soft: #120404;
+  --bambucha-brown: #4a1f00;
+  --bambucha-brown-dark: #2b0d00;
   --bambucha-red: #dc1717;
   --bambucha-red-dark: #740909;
   --bambucha-orange: #ff7a00;
+  --bambucha-gold: #d8a116;
+  --bambucha-gold-soft: #e3b11d;
   --bambucha-yellow: #ffd23c;
   --bambucha-cream: #fff1cf;
   --bambucha-muted: #c9a875;
@@ -17,14 +21,61 @@
 
 html {
   scroll-behavior: smooth;
+  background: #d8a116;
 }
 
 body {
   margin: 0;
+  min-height: 100vh;
+  background: #d8a116;
+  color: #2b1600;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background:
-    radial-gradient(circle at top, rgba(255, 122, 0, 0.18), transparent 35%),
-    linear-gradient(180deg, #120404 0%, #050101 45%, #000000 100%);
-  color: white;
+    radial-gradient(circle at 50% 10%, rgba(255, 245, 172, 0.48), transparent 28%),
+    radial-gradient(circle at 78% 42%, rgba(255, 147, 0, 0.22), transparent 36%),
+    radial-gradient(circle at 18% 72%, rgba(151, 50, 0, 0.12), transparent 32%),
+    linear-gradient(180deg, #d8a116 0%, #d8a116 48%, #d39a08 100%);
+}
+
+.bambucha-public-page {
+  min-height: 100vh;
+  background: transparent !important;
+  color: #2b1600;
+}
+
+/*
+  Las secciones públicas tenían fondos propios distintos.
+  Este bloque fuerza un mismo fondo dorado continuo sin tocar tarjetas internas,
+  carrito, panel privado ni APIs.
+*/
+.bambucha-public-page > section {
+  background: transparent !important;
+}
+
+.bambucha-public-page > section::before,
+.bambucha-public-page > section::after {
+  background-color: transparent !important;
+}
+
+.bambucha-public-page > section > .absolute.inset-0,
+.bambucha-public-page > section > .absolute.inset-x-0,
+.bambucha-public-page > section > .pointer-events-none.absolute.inset-0 {
+  background: transparent !important;
+}
+
+.bambucha-public-page > section + section {
+  margin-top: 0 !important;
+}
+
+.bambucha-public-page .public-section-gap-fix {
+  background: transparent !important;
 }
 
 ::selection {
@@ -37,14 +88,15 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #050101;
+  background: #6d3200;
 }
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(
     180deg,
     var(--bambucha-red),
-    var(--bambucha-orange)
+    var(--bambucha-orange),
+    var(--bambucha-yellow)
   );
   border-radius: 999px;
 }

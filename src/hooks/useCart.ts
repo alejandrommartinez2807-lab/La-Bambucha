@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react"
 
-const CART_STORAGE_KEY = "bambucha_cart_v3"
+const CART_STORAGE_KEY = "la_bambucha_premium_cart_v1"
+
+export type ProductPaymentMode = "divisa" | "mixto"
 
 export type CartItem = {
   id: number
@@ -13,6 +15,7 @@ export type CartItem = {
   quantity: number
   note?: string
   noteEnabled?: boolean
+  paymentMode?: ProductPaymentMode
 }
 
 export type ProductToAdd = {
@@ -21,6 +24,11 @@ export type ProductToAdd = {
   price: number
   image: string
   category: string
+  paymentMode?: ProductPaymentMode
+}
+
+function normalizePaymentMode(value: unknown, category: string): ProductPaymentMode {
+  return value === "divisa" || category === "Combos" ? "divisa" : "mixto"
 }
 
 function normalizeCartItems(items: unknown): CartItem[] {
@@ -36,16 +44,21 @@ function normalizeCartItems(items: unknown): CartItem[] {
         "price" in item
       )
     })
-    .map((item: any) => ({
-      id: Number(item.id),
-      name: String(item.name),
-      price: Number(item.price),
-      image: String(item.image ?? ""),
-      category: String(item.category ?? ""),
-      quantity: Number(item.quantity ?? 1),
-      note: String(item.note ?? ""),
-      noteEnabled: Boolean(item.noteEnabled ?? false),
-    }))
+    .map((item: any) => {
+      const category = String(item.category ?? "")
+
+      return {
+        id: Number(item.id),
+        name: String(item.name),
+        price: Number(item.price),
+        image: String(item.image ?? ""),
+        category,
+        quantity: Number(item.quantity ?? 1),
+        note: String(item.note ?? ""),
+        noteEnabled: Boolean(item.noteEnabled ?? false),
+        paymentMode: normalizePaymentMode(item.paymentMode, category),
+      }
+    })
     .filter((item) => item.id && item.name && item.price >= 0)
 }
 
@@ -71,11 +84,12 @@ export function useCart() {
   function addItem(product: ProductToAdd) {
     setItems((currentItems) => {
       const existingItem = currentItems.find((item) => item.id === product.id)
+      const paymentMode = normalizePaymentMode(product.paymentMode, product.category)
 
       if (existingItem) {
         return currentItems.map((item) =>
           item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: item.quantity + 1, paymentMode }
             : item
         )
       }
@@ -88,6 +102,7 @@ export function useCart() {
           price: product.price,
           image: product.image,
           category: product.category,
+          paymentMode,
           quantity: 1,
           note: "",
           noteEnabled: false,

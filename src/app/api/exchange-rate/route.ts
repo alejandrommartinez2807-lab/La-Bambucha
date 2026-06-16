@@ -1,10 +1,18 @@
 import { NextResponse } from "next/server"
 
+export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
 export const revalidate = 0
 
 const DOLAR_OFICIAL_URL = "https://ve.dolarapi.com/v1/dolares/oficial"
-const EURO_OFICIAL_URL = "https://ve.dolarapi.com/v1/euros/oficial"
+
+const NO_STORE_HEADERS = {
+  "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+  Pragma: "no-cache",
+  Expires: "0",
+  "CDN-Cache-Control": "no-store",
+  "Vercel-CDN-Cache-Control": "no-store",
+}
 
 type ApiRateResponse = {
   fuente?: string
@@ -33,19 +41,22 @@ function toNumber(value: unknown): number | null {
   return null
 }
 
-async function fetchRate(url: string): Promise<ApiRateResponse> {
-  const response = await fetch(url, {
+async function fetchDollarRate(): Promise<ApiRateResponse> {
+  const response = await fetch(DOLAR_OFICIAL_URL, {
+    method: "GET",
     cache: "no-store",
     next: {
       revalidate: 0,
     },
     headers: {
       Accept: "application/json",
+      "Cache-Control": "no-cache",
+      Pragma: "no-cache",
     },
   })
 
   if (!response.ok) {
-    throw new Error(`Error consultando tasa: ${response.status}`)
+    throw new Error(`Error consultando dólar oficial BCV: ${response.status}`)
   }
 
   return response.json()
@@ -53,51 +64,65 @@ async function fetchRate(url: string): Promise<ApiRateResponse> {
 
 export async function GET() {
   try {
-    const [dollarData, euroData] = await Promise.all([
-      fetchRate(DOLAR_OFICIAL_URL),
-      fetchRate(EURO_OFICIAL_URL),
-    ])
-
+    const dollarData = await fetchDollarRate()
     const dollarRate = toNumber(dollarData.promedio)
-    const euroRate = toNumber(euroData.promedio)
 
-    if (!dollarRate || !euroRate) {
-      throw new Error("No se pudo leer la tasa del dólar o del euro.")
+    if (!dollarRate || dollarRate <= 0) {
+      throw new Error("No se pudo leer la tasa del dólar oficial BCV.")
     }
 
-    const averageRate = Number(((dollarRate + euroRate) / 2).toFixed(2))
+    const bcvRate = Number(dollarRate.toFixed(2))
+    const valueDate = dollarData.fechaActualizacion || null
 
     return NextResponse.json(
       {
-        rate: averageRate,
-        averageRate,
-        dollarRate,
-        euroRate,
-        formula: "(dollarRate + euroRate) / 2",
-        source: "Promedio entre dólar oficial BCV y euro oficial BCV",
-        dollarUpdatedAt: dollarData.fechaActualizacion ?? null,
-        euroUpdatedAt: euroData.fechaActualizacion ?? null,
+        rate: bcvRate,
+        bcvRate,
+        dollarRate: bcvRate,
+        averageRate: bcvRate,
+        euroRate: null,
+        formula: "dollarRate",
+        currency: "VES",
+        name: "Dólar oficial BCV",
+        source: "Dólar oficial BCV",
+        valueDate,
+        dollarUpdatedAt: valueDate,
+        euroUpdatedAt: null,
         updatedAt: new Date().toISOString(),
+        fallback: false,
+        warning: null,
       },
       {
-        headers: {
-          "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
-        },
+        headers: NO_STORE_HEADERS,
       }
     )
   } catch (error) {
     return NextResponse.json(
       {
         rate: null,
+        bcvRate: null,
         averageRate: null,
         dollarRate: null,
         euroRate: null,
+        currency: "VES",
+        name: "Dólar oficial BCV",
+        source: "Dólar oficial BCV",
+        valueDate: null,
+        dollarUpdatedAt: null,
+        euroUpdatedAt: null,
+        updatedAt: new Date().toISOString(),
+        fallback: true,
+        warning:
+          "No se pudo consultar la tasa BCV. Revisa la conexión o intenta actualizar más tarde.",
         error:
           error instanceof Error
             ? error.message
-            : "Error desconocido consultando la tasa.",
+            : "Error desconocido consultando la tasa BCV.",
       },
-      { status: 500 }
+      {
+        status: 500,
+        headers: NO_STORE_HEADERS,
+      }
     )
   }
 }

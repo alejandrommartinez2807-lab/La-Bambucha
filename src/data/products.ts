@@ -1,4 +1,20 @@
+export type ProductPaymentMode = "divisa" | "mixto"
+
+export type Product = {
+  id: number
+  name: string
+  category: string
+  description: string
+  price: number
+  image: string
+  paymentMode: ProductPaymentMode
+  isActive?: boolean
+  isFeatured?: boolean
+  sortOrder?: number
+}
+
 export const categories = [
+  "Todos",
   "Combos",
   "Parrillas",
   "Hamburguesas",
@@ -9,7 +25,9 @@ export const categories = [
   "Bebidas",
 ]
 
-export const products = [
+const featuredProductIds = [78, 73, 74, 79, 50, 25, 40, 70]
+
+const baseProducts = [
   // =========================
   // COMBOS ACTUALES
   // =========================
@@ -736,4 +754,14 @@ export const products = [
     price: 2.5,
     image: "/aguagasificada1.5litros.png",
   },
-]
+] satisfies Array<
+  Omit<Product, "paymentMode" | "isActive" | "isFeatured" | "sortOrder">
+>
+
+export const products: Product[] = baseProducts.map((product, index) => ({
+  ...product,
+  paymentMode: product.category === "Combos" ? "divisa" : "mixto",
+  isActive: true,
+  isFeatured: featuredProductIds.includes(product.id),
+  sortOrder: index + 1,
+}))

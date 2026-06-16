@@ -1,10 +1,11 @@
 export const siteConfig = {
   business: {
-    name: "Burger Club",
-    tagline: "Sabor callejero, estilo premium",
-    whatsapp: "584145827432",
-    instagram: "burgerclub.val",
+    name: "La Bambucha",
+    tagline: "Grill Burger",
+    whatsapp: "584121317635",
+    instagram: "la_bambucha_burguer",
     location: "Valencia, Venezuela",
+    googleMapsUrl: "https://maps.app.goo.gl/r4QXeRTgXuRJTqvU8",
   },
 
   currency: {
@@ -12,8 +13,7 @@ export const siteConfig = {
     secondary: "VES",
     baseSymbol: "$",
     secondarySymbol: "Bs",
-    fallbackRate: 500,
-    apiUrl: "https://ve.dolarapi.com/v1/dolares/oficial",
+    fallbackRate: 602.18768455,
     cacheHours: 24,
   },
 }
