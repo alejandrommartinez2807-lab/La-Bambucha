@@ -7,6 +7,19 @@ import {
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
 
+// Igual que el menú: la configuración viene de Apps Script y tardaba hasta 12
+// segundos en cada visita. Se cachea solo la configuración real; los dos
+// caminos de respaldo siguen sin cachearse para no dejar el sitio pegado con
+// la configuración base.
+const CACHE_SECONDS = 60
+const STALE_SECONDS = 3600
+
+const CACHEABLE_HEADERS = {
+  "Cache-Control": `public, max-age=0, s-maxage=${CACHE_SECONDS}, stale-while-revalidate=${STALE_SECONDS}`,
+  "CDN-Cache-Control": `public, s-maxage=${CACHE_SECONDS}, stale-while-revalidate=${STALE_SECONDS}`,
+  "Vercel-CDN-Cache-Control": `public, s-maxage=${CACHE_SECONDS}, stale-while-revalidate=${STALE_SECONDS}`,
+}
+
 function canUseRemoteBusinessConfig() {
   return Boolean(process.env.GOOGLE_SHEETS_WEB_APP_URL)
 }
@@ -44,10 +57,7 @@ export async function GET() {
         fallback: false,
       },
       {
-        headers: {
-          "Cache-Control":
-            "no-store, no-cache, must-revalidate, proxy-revalidate",
-        },
+        headers: CACHEABLE_HEADERS,
       }
     )
   } catch (error) {

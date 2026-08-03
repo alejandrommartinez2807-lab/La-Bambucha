@@ -25,6 +25,20 @@ const NO_STORE_HEADERS = {
   "Vercel-CDN-Cache-Control": "no-store",
 }
 
+// El menú viene de Google Apps Script, que tarda entre 2 y 28 segundos. Sin
+// caché ese tiempo lo esperaba cada visitante. Con 60 s de frescura los
+// cambios del dueño siguen apareciendo rápido, y el stale-while-revalidate
+// hace que nadie más vuelva a esperar: se sirve la copia guardada al instante
+// mientras se refresca por detrás.
+const CACHE_SECONDS = 60
+const STALE_SECONDS = 3600
+
+const CACHEABLE_HEADERS = {
+  "Cache-Control": `public, max-age=0, s-maxage=${CACHE_SECONDS}, stale-while-revalidate=${STALE_SECONDS}`,
+  "CDN-Cache-Control": `public, s-maxage=${CACHE_SECONDS}, stale-while-revalidate=${STALE_SECONDS}`,
+  "Vercel-CDN-Cache-Control": `public, s-maxage=${CACHE_SECONDS}, stale-while-revalidate=${STALE_SECONDS}`,
+}
+
 function normalizeText(value: unknown) {
   return String(value || "").trim()
 }
@@ -120,13 +134,18 @@ function normalizeFallbackProducts() {
 }
 
 function publicProductsResponse(payload: Record<string, unknown>) {
+  // Solo se cachea el menú real. Si se está sirviendo el menú base porque
+  // Apps Script falló, no se guarda: si no, el sitio quedaría pegado con el
+  // respaldo hasta que expire la caché.
+  const isRealMenu = payload.fallback === false
+
   return NextResponse.json(
     {
       generatedAt: new Date().toISOString(),
       ...payload,
     },
     {
-      headers: NO_STORE_HEADERS,
+      headers: isRealMenu ? CACHEABLE_HEADERS : NO_STORE_HEADERS,
     }
   )
 }
