@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react"
+import { useVisiblePolling } from "@/hooks/useVisiblePolling"
 import {
   AlertTriangle,
   ArrowLeft,
@@ -2889,17 +2890,11 @@ export default function PedidosPage() {
     })
   }, [])
 
-  useEffect(() => {
-    if (!adminPassword) return
-
-    const interval = window.setInterval(() => {
-      loadOrders(adminPassword, true)
-    }, 2500)
-
-    return () => {
-      window.clearInterval(interval)
-    }
-  }, [adminPassword])
+  useVisiblePolling(
+    () => loadOrders(adminPassword, true),
+    2500,
+    Boolean(adminPassword)
+  )
 
   const filteredOrders = useMemo(() => {
     let nextOrders = orders
