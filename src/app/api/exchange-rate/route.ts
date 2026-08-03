@@ -6,6 +6,20 @@ export const revalidate = 0
 
 const DOLAR_OFICIAL_URL = "https://ve.dolarapi.com/v1/dolares/oficial"
 
+// La tasa del BCV cambia una vez al día, así que se cachea 30 min en el CDN.
+// El stale-while-revalidate de 24 h es lo importante: si DolarApi falla, el
+// CDN sigue entregando la última tasa buena mientras reintenta por detrás,
+// en vez de dejar la carta sin tasa (que es lo que mostraba "Bs 0,00").
+const CACHE_SECONDS = 1800
+const STALE_SECONDS = 86400
+
+const CACHEABLE_HEADERS = {
+  "Cache-Control": `public, max-age=0, s-maxage=${CACHE_SECONDS}, stale-while-revalidate=${STALE_SECONDS}`,
+  "CDN-Cache-Control": `public, s-maxage=${CACHE_SECONDS}, stale-while-revalidate=${STALE_SECONDS}`,
+  "Vercel-CDN-Cache-Control": `public, s-maxage=${CACHE_SECONDS}, stale-while-revalidate=${STALE_SECONDS}`,
+}
+
+// Un fallo nunca se cachea: el siguiente request vuelve a intentarlo.
 const NO_STORE_HEADERS = {
   "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
   Pragma: "no-cache",
@@ -44,14 +58,11 @@ function toNumber(value: unknown): number | null {
 async function fetchDollarRate(): Promise<ApiRateResponse> {
   const response = await fetch(DOLAR_OFICIAL_URL, {
     method: "GET",
-    cache: "no-store",
     next: {
-      revalidate: 0,
+      revalidate: CACHE_SECONDS,
     },
     headers: {
       Accept: "application/json",
-      "Cache-Control": "no-cache",
-      Pragma: "no-cache",
     },
   })
 
@@ -93,7 +104,7 @@ export async function GET() {
         warning: null,
       },
       {
-        headers: NO_STORE_HEADERS,
+        headers: CACHEABLE_HEADERS,
       }
     )
   } catch (error) {

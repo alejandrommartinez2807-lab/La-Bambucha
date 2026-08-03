@@ -121,14 +121,9 @@ export function useExchangeRate() {
           error: null,
         }))
 
-        const response = await fetch(`/api/exchange-rate?t=${Date.now()}`, {
-          method: "GET",
-          cache: "no-store",
-          headers: {
-            "Cache-Control": "no-cache",
-            Pragma: "no-cache",
-          },
-        })
+        // Sin cache-buster: la respuesta se sirve del CDN, que además guarda
+        // la última tasa buena si el BCV falla.
+        const response = await fetch("/api/exchange-rate", { method: "GET" })
 
         const data = await response.json()
 

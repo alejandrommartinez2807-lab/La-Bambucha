@@ -609,6 +609,10 @@ export default function CartDrawer({
     0
   )
 
+  // Sin tasa válida no se muestra, ni se envía, ni se registra ningún monto
+  // en bolívares: mostrar "Bs 0,00" es lo que llegó a los clientes cuando la
+  // consulta de tasa falló.
+  const hasValidRate = Number.isFinite(exchangeRate) && exchangeRate > 0
   const regularTotalVES = regularTotalPrice * exchangeRate
   const productsTotalUSD = comboTotalPrice + regularTotalPrice
   const isDeliveryOrder = orderType === "Delivery"
@@ -638,6 +642,8 @@ export default function CartDrawer({
   const canRegisterLocalOrder =
     hasItems &&
     !isSubmittingOrder &&
+    // Un pedido registrado sin tasa queda con el monto en bolívares en cero.
+    hasValidRate &&
     (isDeliveryOrder
       ? customerName.trim().length > 0 &&
         customerPhone.trim().length > 0 &&
@@ -676,11 +682,9 @@ export default function CartDrawer({
 
     const regularLines = regularItems.map((item) => {
       const subtotal = item.price * item.quantity
-      const subtotalVES = subtotal * exchangeRate
-
       const baseLine = `• ${item.name} x${item.quantity} — ${formatUSD(
         subtotal
-      )} / Bs ${formatVES(subtotalVES)}`
+      )}${hasValidRate ? ` / Bs ${formatVES(subtotal * exchangeRate)}` : ""}`
 
       if (item.noteEnabled && item.note?.trim()) {
         return `${baseLine}\n  Nota: ${item.note.trim()}`
@@ -738,9 +742,9 @@ export default function CartDrawer({
       messageParts.push("PRODUCTOS")
       messageParts.push(...regularLines)
       messageParts.push(
-        `Subtotal productos: ${formatUSD(
-          regularTotalPrice
-        )} / Bs ${formatVES(regularTotalVES)}`
+        `Subtotal productos: ${formatUSD(regularTotalPrice)}${
+          hasValidRate ? ` / Bs ${formatVES(regularTotalVES)}` : ""
+        }`
       )
       messageParts.push("")
     }
@@ -760,13 +764,16 @@ export default function CartDrawer({
 
     if (hasRegularProducts) {
       messageParts.push(
-        `Productos: ${formatUSD(regularTotalPrice)} / Bs ${formatVES(
-          regularTotalVES
-        )}`
+        `Productos: ${formatUSD(regularTotalPrice)}${
+          hasValidRate ? ` / Bs ${formatVES(regularTotalVES)}` : ""
+        }`
       )
-      messageParts.push("")
-      messageParts.push(`Tasa usada: Bs ${formatVES(exchangeRate)}`)
-      messageParts.push(sourceLine)
+
+      if (hasValidRate) {
+        messageParts.push("")
+        messageParts.push(`Tasa usada: Bs ${formatVES(exchangeRate)}`)
+        messageParts.push(sourceLine)
+      }
     }
 
     return encodeURIComponent(messageParts.join("\n"))
@@ -1052,7 +1059,9 @@ export default function CartDrawer({
                             </p>
 
                             <p className="mt-1 text-[0.72rem] font-black leading-none text-yellow-100/90 sm:text-xs">
-                              Bs {formatVES(itemSubtotalVES)}
+                              {hasValidRate
+                                ? `Bs ${formatVES(itemSubtotalVES)}`
+                                : "Actualizando tasa"}
                             </p>
                           </div>
                         </div>
@@ -1117,7 +1126,13 @@ export default function CartDrawer({
                     Bolívares
                   </p>
                   <strong className="mt-0.5 block text-[1.05rem] font-black leading-none text-white">
-                    Bs {formatVES(totalVES)}
+                    {hasValidRate ? (
+                      `Bs ${formatVES(totalVES)}`
+                    ) : (
+                      <span className="text-[0.62rem] uppercase tracking-[0.08em] text-yellow-200">
+                        Actualizando
+                      </span>
+                    )}
                   </strong>
                 </div>
               </div>
@@ -1134,7 +1149,9 @@ export default function CartDrawer({
 
                 <div className="text-right">
                   <strong className="block text-xs font-black leading-3 text-yellow-300">
-                    Bs {formatVES(exchangeRate)}
+                    {hasValidRate
+                      ? `Bs ${formatVES(exchangeRate)}`
+                      : "Actualizando"}
                   </strong>
                   {exchangeValueDate && (
                     <p className="text-[0.48rem] font-bold leading-3 text-yellow-50/50">
@@ -1479,8 +1496,8 @@ export default function CartDrawer({
                         Productos:{" "}
                         <span className="text-yellow-300">
                           {formatUSD(regularTotalPrice)}
-                        </span>{" "}
-                        / Bs {formatVES(regularTotalVES)}
+                        </span>
+                        {hasValidRate && ` / Bs ${formatVES(regularTotalVES)}`}
                       </p>
                     )}
 
@@ -1521,6 +1538,13 @@ export default function CartDrawer({
                       {orderError}
                     </p>
                   </div>
+                )}
+
+                {hasItems && !hasValidRate && (
+                  <p className="mt-2 rounded-[0.9rem] border border-yellow-300/30 bg-[#5c2100]/60 px-3 py-2 text-center text-[0.66rem] font-black uppercase tracking-[0.08em] text-yellow-200">
+                    Actualizando la tasa del BCV. En un momento puedes registrar
+                    el pedido.
+                  </p>
                 )}
 
                 <button
