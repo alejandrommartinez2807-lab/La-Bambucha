@@ -27,6 +27,7 @@ import {
   XCircle,
 } from "lucide-react"
 import { formatUSD, formatVES } from "@/utils/formatCurrency"
+import { useVisiblePolling } from "@/hooks/useVisiblePolling"
 import {
   getModulePlanAccess,
   getShortPlanLabel,
@@ -2889,17 +2890,14 @@ export default function PedidosPage() {
     })
   }, [])
 
-  useEffect(() => {
-    if (!adminPassword) return
-
-    const interval = window.setInterval(() => {
-      loadOrders(adminPassword, true)
-    }, 2500)
-
-    return () => {
-      window.clearInterval(interval)
-    }
-  }, [adminPassword])
+  // El panel de pedidos avisa con sonido, así que en segundo plano no se
+  // detiene: sigue sondeando cada 30 s para no perderse un pedido nuevo.
+  useVisiblePolling(
+    () => loadOrders(adminPassword, true),
+    2500,
+    Boolean(adminPassword),
+    30000
+  )
 
   const filteredOrders = useMemo(() => {
     let nextOrders = orders

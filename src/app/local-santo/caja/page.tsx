@@ -25,6 +25,7 @@ import {
 import { formatUSD, formatVES } from "@/utils/formatCurrency"
 import ModuleAccessGuard from "@/components/ModuleAccessGuard"
 import { useOperationalSounds, useOrderSoundAlerts } from "@/hooks/useOperationalSounds"
+import { useVisiblePolling } from "@/hooks/useVisiblePolling"
 
 const ADMIN_STORAGE_KEY = "la_bambucha_premium_cashier_session"
 
@@ -757,11 +758,14 @@ function CajaPageContent() {
     }
   }, [])
 
-  useEffect(() => {
-    if (!adminPassword) return
-    const interval = window.setInterval(() => loadOrders(adminPassword, true), 2500)
-    return () => window.clearInterval(interval)
-  }, [adminPassword])
+  // Caja avisa con sonido, así que en segundo plano no se detiene: sigue
+  // sondeando cada 30 s para no perderse un pedido nuevo.
+  useVisiblePolling(
+    () => loadOrders(adminPassword, true),
+    2500,
+    Boolean(adminPassword),
+    30000
+  )
 
   const filteredOrders = useMemo(() => {
     const query = searchText.trim().toLowerCase()

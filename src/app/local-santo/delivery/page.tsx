@@ -20,6 +20,7 @@ import {
 } from "lucide-react"
 import { formatUSD, formatVES } from "@/utils/formatCurrency"
 import ModuleAccessGuard from "@/components/ModuleAccessGuard"
+import { useVisiblePolling } from "@/hooks/useVisiblePolling"
 
 type ProductPaymentMode = "divisa" | "mixto"
 
@@ -894,17 +895,13 @@ function DeliveryPageContent() {
     }
   }, [])
 
-  useEffect(() => {
-    if (!adminPassword) return
-
-    const interval = window.setInterval(() => {
-      loadOrders(adminPassword, true)
-    }, 2500)
-
-    return () => {
-      window.clearInterval(interval)
-    }
-  }, [adminPassword])
+  // Delivery no tiene avisos sonoros: con la pestaña oculta se detiene del
+  // todo y refresca al instante al volver al frente.
+  useVisiblePolling(
+    () => loadOrders(adminPassword, true),
+    2500,
+    Boolean(adminPassword)
+  )
 
   const deliveryOrders = useMemo(() => orders.filter(isDeliveryOrder), [orders])
 

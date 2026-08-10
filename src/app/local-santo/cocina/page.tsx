@@ -25,6 +25,7 @@ import {
   useOperationalSounds,
   useOrderSoundAlerts,
 } from "@/hooks/useOperationalSounds"
+import { useVisiblePolling } from "@/hooks/useVisiblePolling"
 
 const ADMIN_STORAGE_KEY = "la_bambucha_premium_owner_session"
 
@@ -575,17 +576,14 @@ export default function CocinaPage() {
     }
   }, [])
 
-  useEffect(() => {
-    if (!adminPassword) return
-
-    const interval = window.setInterval(() => {
-      loadOrders(adminPassword, true)
-    }, 2500)
-
-    return () => {
-      window.clearInterval(interval)
-    }
-  }, [adminPassword])
+  // Cocina avisa con sonido, así que en segundo plano no se detiene: sigue
+  // sondeando cada 30 s para no perderse un pedido nuevo.
+  useVisiblePolling(
+    () => loadOrders(adminPassword, true),
+    2500,
+    Boolean(adminPassword),
+    30000
+  )
 
   const preparingOrders = orders.filter(shouldShowAsPreparing)
   const readyOrders = orders.filter(shouldShowAsReady)
